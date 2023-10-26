@@ -23,3 +23,10 @@ def addMatrices():
             print("Column number", col)
             column = int(input(f"Enter element of the row number {row + 1}: "))
             lst[row].append(column)
+    lst2 = []
+    for row in range(num_row):
+        print(f"For the second matrix enter elemets for the row number {row + 1}:")
+        lst2.append([])
+        for col in range(num_col):
+            column = int(input(f"Enter element of the column  {col + 1}: "))
+            lst2[row].append(column)
