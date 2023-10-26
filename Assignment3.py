@@ -30,3 +30,14 @@ def addMatrices():
         for col in range(num_col):
             column = int(input(f"Enter element of the column  {col + 1}: "))
             lst2[row].append(column)
+    result = []
+    x = []
+    y = []
+    for i in range(num_row - 1):
+        for j in range(num_col):
+            x.append(lst[i][j] + lst[i][j])
+    result.append(x)
+    for i in range(num_row - 1):
+        for j in range(num_col):
+            y.append(lst2[i][j] + lst2[i][j])
+    result.append(y)
