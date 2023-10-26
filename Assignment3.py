@@ -41,3 +41,4 @@ def addMatrices():
         for j in range(num_col):
             y.append(lst2[i][j] + lst2[i][j])
     result.append(y)
+    return f"The resulting sum of the matrices is: {result}"
