@@ -10,3 +10,7 @@ def displayMenu():
         + "6. Search for an Element & Merge Sort\n"
         + "7.Exit"
     )
+def addMatrices():
+    num_row = int(input("Enter number of rows: "))
+    num_col = int(input("Enter number of columns: "))
+    lst = []
