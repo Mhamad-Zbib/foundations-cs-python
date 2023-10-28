@@ -41,5 +41,3 @@ def addMatrices():
             row.append(lst[i][j] + lst2[i][j])
         result.append(row)
     return f"The resulting sum of the matrices is: {result}"
-
-print(addMatrices())
