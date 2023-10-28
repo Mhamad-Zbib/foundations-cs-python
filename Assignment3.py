@@ -2,7 +2,7 @@ def displayMenu():
     name = input("Enter your name: ")
     print("Welcome", name)
     print(
-        "1. Add Matrices\n"
+        "  1. Add Matrices\n"
         + "2. Check Rotation\n"
         + "3. Invert Dictionary\n"
         + "4. Convert Matrix to Dictionary\n"
@@ -16,29 +16,30 @@ def addMatrices():
     num_row = int(input("Enter number of rows: "))
     num_col = int(input("Enter number of columns: "))
     lst = []
+
     for row in range(num_row):
-        print("Row", row)
+        print("------")
+        print(f"For the first matrix enter elemets for the row number {row + 1}:")
         lst.append([])
         for col in range(num_col):
-            print("Column number", col)
-            column = int(input(f"Enter element of the row number {row + 1}: "))
+            column = int(input(f"Enter element {col+ 1} of the row number {row + 1}: "))
             lst[row].append(column)
+    
     lst2 = []
     for row in range(num_row):
+        print("------")
         print(f"For the second matrix enter elemets for the row number {row + 1}:")
         lst2.append([])
         for col in range(num_col):
-            column = int(input(f"Enter element of the column  {col + 1}: "))
+            column = int(input(f"Enter element {col+ 1} of the row number {row + 1}: "))
             lst2[row].append(column)
+
     result = []
-    x = []
-    y = []
-    for i in range(num_row - 1):
+    for i in range(num_row):
+        row = []
         for j in range(num_col):
-            x.append(lst[i][j] + lst[i][j])
-    result.append(x)
-    for i in range(num_row - 1):
-        for j in range(num_col):
-            y.append(lst2[i][j] + lst2[i][j])
-    result.append(y)
+            row.append(lst[i][j] + lst2[i][j])
+        result.append(row)
     return f"The resulting sum of the matrices is: {result}"
+
+print(addMatrices())
