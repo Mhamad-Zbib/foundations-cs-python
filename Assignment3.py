@@ -120,3 +120,10 @@ def convert():
     for i in lst:
         dictionary[i[2]] = i[:2] + i[3:]
     return dictionary
+
+
+def reverseWord(s):
+    def isPalindrome(s):
+        if s == "":
+            return s
+        return isPalindrome(s[1:]) + s[0]
