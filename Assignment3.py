@@ -72,9 +72,9 @@ def rotation():
             row.append(lst[j][i])
         result.append(row)
     if result == lst2:
-        return True
+        return f"{True} ,The matrices are rotations of each other."
     else:
-        return False
+        return f"{False} ,The matrices are not rotations of each other."
 
 
 def invertDict():
@@ -163,36 +163,50 @@ def mergeSort(l):
             k += 1
     return f"After Sorting: {l}"
 
+
 def main():
     choice = 0
     while choice != 7:
         displayMenu()
         choice = int(input("Enter the number of your choice: "))
+
         if choice == 1:
-            addMatrices()
-        if choice == 2:
-            rotation()
-        if choice == 3:
-            invertDict()
-        if choice == 4:
-            convert()
-        if choice == 5:
+            print(addMatrices())
+
+        elif choice == 2:
+            print(rotation())
+
+        elif choice == 3:
+            print(invertDict())
+
+        elif choice == 4:
+            print(convert())
+
+        elif choice == 5:
             string = input("Enter a word to check if it's a palindrome: ")
             if string.isalpha():
-                reverseWord(string)
+                print(reverseWord(string))
             elif string.isdigit():
                 while string.isdigit():
                     print("Please enter a valid word without any numbers.")
                     string = input("Enter a word to check if it's a palindrome: ")
-                    reverseWord(string)
+                    print(reverseWord(string))
                     break
-        if choice == 6:
+
+        elif choice == 6:
             while True:
                 try:
-                    lst = list(map(int, input("Enter numbers to create the list you want to sort: ").split()))
-                    mergeSort(lst)
+                    lst = list(map(int, input("Enter numbers to create the list you want to sort: ").split(),) )
+                    print(mergeSort(lst))
                     break
                 except ValueError:
                     print("Please try again and enter valid numbers.")
 
+        elif choice == 7:
+            print("Hope you Enjoyed!")
+            break
+        
+        else:
+            print("Please enter a valid number between 1 and 7.")
+        
 
