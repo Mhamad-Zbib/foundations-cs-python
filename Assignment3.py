@@ -1,14 +1,16 @@
+name = input("Enter your name: ")
+print(f"Welcome {name.capitalize()}")
+print("-------")
+
 def displayMenu():
-    name = input("Enter your name: ")
-    print("Welcome", name)
     print(
-        "  1. Add Matrices\n"
-        + "2. Check Rotation\n"
-        + "3. Invert Dictionary\n"
-        + "4. Convert Matrix to Dictionary\n"
-        + "5. Check Palindrome\n"
-        + "6. Search for an Element & Merge Sort\n"
-        + "7.Exit"
+        "1. Add Matrices\n"
+          + "2. Check Rotation\n"
+          + "3. Invert Dictionary\n"
+          + "4. Convert Matrix to Dictionary\n"
+          + "5. Check Palindrome\n"
+          + "6. Search for an Element & Merge Sort\n"
+          + "7. Exit"
     )
 
 
@@ -210,3 +212,4 @@ def main():
             print("Please enter a valid number between 1 and 7.")
         
 
+print(main())
