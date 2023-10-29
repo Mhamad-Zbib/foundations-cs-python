@@ -162,3 +162,23 @@ def mergeSort(l):
             j += 1
             k += 1
     return f"After Sorting: {l}"
+
+def main():
+    choice = 0
+    while choice != 7:
+        displayMenu()
+        choice = int(input("Enter the number of your choice: "))
+        if choice == 1:
+            addMatrices()
+        if choice == 2:
+            rotation()
+        if choice == 3:
+            invertDict()
+        if choice == 4:
+            convert()
+        if choice == 5:
+            string = input("Enter a word to check if it's a palindrome: ")
+            if string.isalpha():
+                reverseWord(string)
+            
+
