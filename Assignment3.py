@@ -153,3 +153,12 @@ def mergeSort(l):
                 j += 1
             k += 1
 
+        while i < len(left_half):
+            l[k] = left_half[i]
+            i += 1
+            k += 1
+        while j < len(right_half):
+            l[k] = right_half[j]
+            j += 1
+            k += 1
+    return l
