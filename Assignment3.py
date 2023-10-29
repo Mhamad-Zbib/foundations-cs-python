@@ -133,3 +133,12 @@ def reverseWord(s):
         return f"{True}, Your string {s} is a Palindrome"
     else:
         return f"{False}, Your string {s} is not a Palindrome"
+
+
+def mergeSort(l):
+    if len(l) > 1:
+        half = len(l) // 2
+        left_half = l[:half]
+        right_half = l[half:]
+        mergeSort(left_half)
+        mergeSort(right_half)
