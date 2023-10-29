@@ -3,7 +3,7 @@ print("-------")
 print(f"Welcome {name.capitalize()}")
 print("-------")
 
-def displayMenu():
+def displayMenu(): # O(1)
     print("Choose which functions would like to use!\n"
           + "\n"
           + "The menu:\n"
@@ -17,21 +17,21 @@ def displayMenu():
     )
 
 
-def addMatrices():
+def addMatrices(): # O(N^2),  N being the length of the list
     num_row = int(input("Enter number of rows: "))
     num_col = int(input("Enter number of columns: "))
     lst = []
 
-    for row in range(num_row):
+    for row in range(num_row): # o(n^2)
         print("------")
         print(f"For the first matrix enter elemets for the row number {row + 1}:")
         lst.append([])
-        for col in range(num_col):
+        for col in range(num_col): 
             column = int(input(f"Enter element {col+ 1} of the row number {row + 1}: "))
             lst[row].append(column)
 
     lst2 = []
-    for row in range(num_row):
+    for row in range(num_row): # o(n^2)
         print("------")
         print(f"For the second matrix enter elemets for the row number {row + 1}:")
         lst2.append([])
@@ -40,7 +40,7 @@ def addMatrices():
             lst2[row].append(column)
 
     result = []
-    for i in range(num_row):
+    for i in range(num_row):  # o(n^2)
         row = []
         for j in range(num_col):
             row.append(lst[i][j] + lst2[i][j])
@@ -49,7 +49,7 @@ def addMatrices():
     return f"The resulting sum of the matrices is: {result}"
 
 
-def rotation():
+def rotation(): # O(N^2), N being the length of the lists (lst,lst2,result)
     num_row = int(input("Enter number of rows: "))
     num_col = int(input("Enter number of columns: "))
     lst = []
@@ -85,7 +85,7 @@ def rotation():
         return f"{False} ,The matrices are not rotations of each other."
 
 
-def invertDict():
+def invertDict(): # O(N), N being the length of the dictionary, or dictionary2
     num = int(input("Enter the number of keys: "))
     dictionary = {}
     dictionary2 = {}
@@ -104,7 +104,7 @@ def invertDict():
     return f"Before inverting: {dictionary} \n after inverting: {dictionary2}"
 
 
-def convert():
+def convert(): # O(N), N being the length of the list or the dictionary
     num = int(input("Enter the number of the IDs you want to insert: "))
     lst = []
     dictionary = {}
@@ -131,7 +131,7 @@ def convert():
     return dictionary
 
 
-def reverseWord(s):
+def reverseWord(s): # O(N), N being length of the parameter
     def isPalindrome(s):
         if s == "":
             return s
@@ -144,7 +144,7 @@ def reverseWord(s):
         return f"{False}, Your string {s} is not a Palindrome"
 
 
-def mergeSort(l):
+def mergeSort(l): # O(N), N being length of the list
     if len(l) > 1:
         half = len(l) // 2
         left_half = l[:half]
@@ -173,7 +173,7 @@ def mergeSort(l):
     return f"After Sorting: {l}"
 
 
-def main():
+def main(): # O(N^2), N being the user's input
     choice = 0
     while choice != 7:
         displayMenu()
