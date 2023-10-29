@@ -142,3 +142,14 @@ def mergeSort(l):
         right_half = l[half:]
         mergeSort(left_half)
         mergeSort(right_half)
+
+        i = j = k = 0
+        while i < len(left_half) and j < len(right_half):
+            if left_half[i] < right_half[j]:
+                l[k] = left_half[i]
+                i += 1
+            else:
+                l[k] = right_half[j]
+                j += 1
+            k += 1
+
