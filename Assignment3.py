@@ -64,3 +64,14 @@ def rotation():
         for col in range(num_row):
             column = int(input(f"Enter element {col+ 1} of the row number {row + 1}: "))
             lst2[row].append(column)
+
+    result = []
+    for i in range(num_col):
+        row = []
+        for j in range(num_row):
+            row.append(lst[j][i])
+        result.append(row)
+    if result == lst2:
+        return True
+    else:
+        return False
