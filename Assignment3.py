@@ -24,7 +24,7 @@ def addMatrices():
         for col in range(num_col):
             column = int(input(f"Enter element {col+ 1} of the row number {row + 1}: "))
             lst[row].append(column)
-    
+
     lst2 = []
     for row in range(num_row):
         print("------")
@@ -41,3 +41,17 @@ def addMatrices():
             row.append(lst[i][j] + lst2[i][j])
         result.append(row)
     return f"The resulting sum of the matrices is: {result}"
+
+
+def rotation():
+    num_row = int(input("Enter number of rows: "))
+    num_col = int(input("Enter number of columns: "))
+    lst = []
+
+    for row in range(num_row):
+        print("------")
+        print(f"For the first matrix enter elemets for the row number {row + 1}:")
+        lst.append([])
+        for col in range(num_col):
+            column = int(input(f"Enter element {col+ 1} of the row number {row + 1}: "))
+            lst[row].append(column)
