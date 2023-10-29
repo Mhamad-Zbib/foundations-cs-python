@@ -127,3 +127,9 @@ def reverseWord(s):
         if s == "":
             return s
         return isPalindrome(s[1:]) + s[0]
+
+    string = isPalindrome(s)
+    if s == string:
+        return f"{True}, Your string {s} is a Palindrome"
+    else:
+        return f"{False}, Your string {s} is not a Palindrome"
