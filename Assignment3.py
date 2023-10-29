@@ -75,14 +75,21 @@ def rotation():
         return True
     else:
         return False
-    
 
 
 def invertDict():
     num = int(input("Enter the number of keys: "))
     dictionary = {}
+    dictionary2 = {}
 
     for i in range(num):
         key = input(f"Insert your key : ")
         value = input(f"Insert your value: ")
         dictionary.update({key: value})
+
+    for key, value in dictionary.items():
+        if value in dictionary2:
+            dictionary2[value].append(key)
+        else:
+            dictionary2[value] = [key]
+    return f"Before inverting: {dictionary} \n after inverting: {dictionary2}"
