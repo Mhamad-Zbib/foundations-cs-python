@@ -93,3 +93,23 @@ def invertDict():
         else:
             dictionary2[value] = [key]
     return f"Before inverting: {dictionary} \n after inverting: {dictionary2}"
+
+
+def Convert():
+    num = int(input("Enter the number of the IDs you want to insert: "))
+    lst = []
+    for i in range(num):
+        first_name = input(f"Enter name {i + 1}: ")
+        last_name = input(f"Enter last name {i + 1}: ")
+        id = input(
+            f"Enter the ID of {first_name.capitalize()} {last_name.capitalize()}: "
+        )
+        job_title = input(
+            f"Enter the job title of {first_name.capitalize()} {last_name.capitalize()}: "
+        )
+        company = input(
+            f"Enter the company that {first_name.capitalize()} {last_name.capitalize()} work in : "
+        )
+
+        lstt = [first_name, last_name, id, job_title, company]
+        lst.append(lstt)
