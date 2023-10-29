@@ -161,4 +161,4 @@ def mergeSort(l):
             l[k] = right_half[j]
             j += 1
             k += 1
-    return l
+    return f"After Sorting: {l}"
