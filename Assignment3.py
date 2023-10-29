@@ -1,16 +1,19 @@
 name = input("Enter your name: ")
+print("-------")
 print(f"Welcome {name.capitalize()}")
 print("-------")
 
 def displayMenu():
-    print(
-        "1. Add Matrices\n"
-          + "2. Check Rotation\n"
-          + "3. Invert Dictionary\n"
-          + "4. Convert Matrix to Dictionary\n"
-          + "5. Check Palindrome\n"
-          + "6. Search for an Element & Merge Sort\n"
-          + "7. Exit"
+    print("Choose which functions would like to use!\n"
+          + "\n"
+          + "The menu:\n"
+          + "         1. Add Matrices\n"
+          + "         2. Check Rotation\n"
+          + "         3. Invert Dictionary\n"
+          + "         4. Convert Matrix to Dictionary\n"
+          + "         5. Check Palindrome\n"
+          + "         6. Search for an Element & Merge Sort\n"
+          + "         7. Exit"
     )
 
 
@@ -42,6 +45,7 @@ def addMatrices():
         for j in range(num_col):
             row.append(lst[i][j] + lst2[i][j])
         result.append(row)
+    print("------")
     return f"The resulting sum of the matrices is: {result}"
 
 
@@ -74,8 +78,10 @@ def rotation():
             row.append(lst[j][i])
         result.append(row)
     if result == lst2:
+        print("------")
         return f"{True} ,The matrices are rotations of each other."
     else:
+        print("------")
         return f"{False} ,The matrices are not rotations of each other."
 
 
@@ -94,6 +100,7 @@ def invertDict():
             dictionary2[value].append(key)
         else:
             dictionary2[value] = [key]
+    print("------")
     return f"Before inverting: {dictionary} \n after inverting: {dictionary2}"
 
 
@@ -129,9 +136,9 @@ def reverseWord(s):
         if s == "":
             return s
         return isPalindrome(s[1:]) + s[0]
-
+    print("------")
     string = isPalindrome(s)
-    if s == string:
+    if s == string: 
         return f"{True}, Your string {s} is a Palindrome"
     else:
         return f"{False}, Your string {s} is not a Palindrome"
@@ -174,25 +181,31 @@ def main():
 
         if choice == 1:
             print(addMatrices())
+            print("------")
 
         elif choice == 2:
             print(rotation())
+            print("------")
 
         elif choice == 3:
             print(invertDict())
+            print("------")
 
         elif choice == 4:
             print(convert())
+            print("------")
 
         elif choice == 5:
             string = input("Enter a word to check if it's a palindrome: ")
             if string.isalpha():
                 print(reverseWord(string))
+                print("------")
             elif string.isdigit():
                 while string.isdigit():
                     print("Please enter a valid word without any numbers.")
                     string = input("Enter a word to check if it's a palindrome: ")
                     print(reverseWord(string))
+                    print("------")
                     break
 
         elif choice == 6:
@@ -200,16 +213,18 @@ def main():
                 try:
                     lst = list(map(int, input("Enter numbers to create the list you want to sort: ").split(),) )
                     print(mergeSort(lst))
+                    print("------")
                     break
                 except ValueError:
                     print("Please try again and enter valid numbers.")
+                    print("------")
 
         elif choice == 7:
-            print("Hope you Enjoyed!")
-            break
+            return "Hope you Enjoyed!"
         
         else:
             print("Please enter a valid number between 1 and 7.")
+            print("------")
         
 
 print(main())
