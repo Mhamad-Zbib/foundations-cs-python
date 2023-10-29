@@ -180,5 +180,19 @@ def main():
             string = input("Enter a word to check if it's a palindrome: ")
             if string.isalpha():
                 reverseWord(string)
-            
+            elif string.isdigit():
+                while string.isdigit():
+                    print("Please enter a valid word without any numbers.")
+                    string = input("Enter a word to check if it's a palindrome: ")
+                    reverseWord(string)
+                    break
+        if choice == 6:
+            while True:
+                try:
+                    lst = list(map(int, input("Enter numbers to create the list you want to sort: ").split()))
+                    mergeSort(lst)
+                    break
+                except ValueError:
+                    print("Please try again and enter valid numbers.")
+
 
