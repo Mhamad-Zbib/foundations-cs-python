@@ -55,3 +55,12 @@ def rotation():
         for col in range(num_col):
             column = int(input(f"Enter element {col+ 1} of the row number {row + 1}: "))
             lst[row].append(column)
+
+    lst2 = []
+    for row in range(num_col):
+        print("------")
+        print(f"For the second matrix enter elemets for the row number {row + 1}:")
+        lst2.append([])
+        for col in range(num_row):
+            column = int(input(f"Enter element {col+ 1} of the row number {row + 1}: "))
+            lst2[row].append(column)
