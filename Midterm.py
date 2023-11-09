@@ -36,3 +36,11 @@ def closeTab(index):
             tab.pop(index - 1)
         else:
             print("Please enter a valid number of a tab.")
+
+def switchTab(index):
+    lst = []
+    if index == "":
+        lst.append(tab[-1])
+    return lst[-1]["content"]
+    
+    
