@@ -26,3 +26,13 @@ def openTab():
     title = input("Enter the title of the website: ")
     url = input("Enter the url of the website: ")
     tab.append({"title": title, "url": url})
+
+
+def closeTab(index):
+    if index == "":
+        tab.pop()
+    elif index is not None:
+        if index >= 1 and index <= len(tab):
+            tab.pop(index - 1)
+        else:
+            print("Please enter a valid number of a tab.")
