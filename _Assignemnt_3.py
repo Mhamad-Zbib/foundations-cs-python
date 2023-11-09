@@ -109,7 +109,7 @@ def convert(): # O(N), N being the length of the list or the dictionary
     lst = []
     dictionary = {}
 
-    for i in range(num):
+    for i in range(num): 
         first_name = input(f"Enter name {i + 1}: ")
         last_name = input(f"Enter last name of {first_name.capitalize()}: ")
         id = input(
@@ -151,7 +151,7 @@ def mergeSort(l): # O(N), N being length of the list
         right_half = l[half:]
         mergeSort(left_half)
         mergeSort(right_half)
-
+        
         i = j = k = 0
         while i < len(left_half) and j < len(right_half):
             if left_half[i] < right_half[j]:
