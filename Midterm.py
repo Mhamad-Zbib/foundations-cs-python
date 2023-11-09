@@ -49,5 +49,3 @@ def switchTab(index):
         if index >= 1 and index <= len(tab):
             lst.append(tab[index - 1])
             return lst[0]["content"]
-        else:
-            print("Enter a valid number")
