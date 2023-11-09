@@ -1,6 +1,8 @@
 print("------------")
 name = input("Enter you name: ")
+print("------------")
 print(f"Welcome to the Browser Tabs Simulation {name.capitalize()}!")
+print("------------")
 
 
 def displayMenu():
@@ -25,7 +27,7 @@ tab = []
 def openTab():
     title = input("Enter the title of the website: ")
     url = input("Enter the url of the website: ")
-    tab.append({"title": title, "url": url, "content": ""})
+    tab.append({"title": title, "url": url, "content": "Content of the url"})
 
 
 def closeTab(index):
@@ -37,10 +39,15 @@ def closeTab(index):
         else:
             print("Please enter a valid number of a tab.")
 
+
 def switchTab(index):
     lst = []
     if index == "":
         lst.append(tab[-1])
-    return lst[-1]["content"]
-    
-    
+        return lst[0]["content"]
+    elif index is not None:
+        if index >= 1 and index <= len(tab):
+            lst.append(tab[index - 1])
+            return lst[0]["content"]
+        else:
+            print("Enter a valid number")
