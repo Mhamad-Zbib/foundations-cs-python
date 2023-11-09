@@ -25,7 +25,7 @@ tab = []
 def openTab():
     title = input("Enter the title of the website: ")
     url = input("Enter the url of the website: ")
-    tab.append({"title": title, "url": url})
+    tab.append({"title": title, "url": url, "content": ""})
 
 
 def closeTab(index):
