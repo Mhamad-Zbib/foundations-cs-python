@@ -1,5 +1,6 @@
 import validators
-
+from bs4 import BeautifulSoup
+import requests
 
 print("------------")
 name = input("Enter you name: ")
@@ -29,10 +30,11 @@ tab = []
 
 def openTab():
     title = input("Enter the title of the website: ")
-    url = validators.url(input("Enter the url of the website: "))
-    if url:
-        tab.append({"title": title, "url": url, "content": "Content of the url"})
-        print(f"Url is Valid,{tab}")
+    url = input("Enter the url of the website: ")
+    if validators.url(url):
+        result = requests.get(url)
+        doc = BeautifulSoup(result.text, "html.parser")
+        tab.append({"title": title, "url": url, "content": doc.prettify()})
     else:
         print("Url is invalid, Please try again.")
 
