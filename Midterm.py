@@ -34,9 +34,8 @@ def openTab():
     if validators.url(parent_url):
         result = requests.get(parent_url)
         doc = BeautifulSoup(result.text, "html.parser")
-        tab.append(
-            {"title": title, "url": parent_url, "content": doc.prettify()}
-        )
+        tab.append({"title": title, "url": parent_url, "content": doc.prettify()})
+        return tab
     else:
         print("Url is invalid, Please try again.")
 
@@ -67,7 +66,7 @@ def nestedTabs(index):
         print("Please enter a number to specify which tab you would like to add in.")
     if index < 1 and index > len(tab):
         print("Please try again and enter a valid number of a tab.")
-    if index >= 1 and index <=len(tab):
+    if index >= 1 and index <= len(tab):
         parent_tab = tab[index - 1]
         title = input("Enter the title of the nested tab of the website: ")
         child_url = input("Enter the url of the nested tab of the website: ")
@@ -81,7 +80,13 @@ def nestedTabs(index):
                 print("Your Url is not related to the website")
         else:
             print("Url is invalid, Please try again.")
-    return tab
 
-
-    
+    condition = input(
+        "If you want to add another nested tab to this tab type YES, if not type NO: "
+    ).lower()
+    if condition == "yes":
+        nestedTabs(index)
+    elif condition == "no":
+        return tab
+    else:
+        return tab
