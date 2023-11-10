@@ -63,19 +63,24 @@ def switchTab(index):
 
 
 def nestedTabs(index):
-    parent_tab = tab[index - 1]
-    title = input("Enter the title of the nested tab of the website: ")
-    child_url = input("Enter the url of the nested tab of the website: ")
-    if validators.url(child_url):
-        if child_url.startswith(parent_tab["url"]):
-            if "nested tabs" not in parent_tab:
-                parent_tab["nested tabs"] = []
+    if index == "":
+        print("Please enter a number to specify which tab you would like to add in.")
+    if index < 1 and index > len(tab):
+        print("Please try again and enter a valid number of a tab.")
+    if index >= 1 and index <=len(tab):
+        parent_tab = tab[index - 1]
+        title = input("Enter the title of the nested tab of the website: ")
+        child_url = input("Enter the url of the nested tab of the website: ")
+        if validators.url(child_url):
+            if child_url.startswith(parent_tab["url"]):
+                if "nested tabs" not in parent_tab:
+                    parent_tab["nested tabs"] = []
 
-            parent_tab["nested tabs"].append({"title": title, "url": child_url})
+                parent_tab["nested tabs"].append({"title": title, "url": child_url})
+            else:
+                print("Your Url is not related to the website")
         else:
-            print("Your Url is not related to the website")
-    else:
-        print("Url is invalid, Please try again.")
+            print("Url is invalid, Please try again.")
     return tab
 
 
