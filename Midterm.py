@@ -1,3 +1,6 @@
+import validators
+
+
 print("------------")
 name = input("Enter you name: ")
 print("------------")
@@ -26,8 +29,12 @@ tab = []
 
 def openTab():
     title = input("Enter the title of the website: ")
-    url = input("Enter the url of the website: ")
-    tab.append({"title": title, "url": url, "content": "Content of the url"})
+    url = validators.url(input("Enter the url of the website: "))
+    if url:
+        tab.append({"title": title, "url": url, "content": "Content of the url"})
+        print(f"Url is Valid,{tab}")
+    else:
+        print("Url is invalid, Please try again.")
 
 
 def closeTab(index):
