@@ -30,11 +30,13 @@ tab = []
 
 def openTab():
     title = input("Enter the title of the website: ")
-    url = input("Enter the url of the website: ")
-    if validators.url(url):
-        result = requests.get(url)
+    parent_url = input("Enter the url of the website: ")
+    if validators.url(parent_url):
+        result = requests.get(parent_url)
         doc = BeautifulSoup(result.text, "html.parser")
-        tab.append({"title": title, "url": url, "content": doc.prettify()})
+        tab.append(
+            {"title": title, "url": parent_url, "content": doc.prettify()}
+        )
     else:
         print("Url is invalid, Please try again.")
 
@@ -58,3 +60,23 @@ def switchTab(index):
         if index >= 1 and index <= len(tab):
             lst.append(tab[index - 1])
             return lst[0]["content"]
+
+
+def nestedTabs(index):
+    parent_tab = tab[index - 1]
+    title = input("Enter the title of the nested tab of the website: ")
+    child_url = input("Enter the url of the nested tab of the website: ")
+    if validators.url(child_url):
+        if child_url.startswith(parent_tab["url"]):
+            if "nested tabs" not in parent_tab:
+                parent_tab["nested tabs"] = []
+
+            parent_tab["nested tabs"].append({"title": title, "url": child_url})
+        else:
+            print("Your Url is not related to the website")
+    else:
+        print("Url is invalid, Please try again.")
+    return tab
+
+
+    
