@@ -63,11 +63,12 @@ def switchTab(index):
 
 def displayTabs():
     for i in range(len(tab)):
-        print(tab[i]["title"], ":")
+        print(f"the titles of tab {i + 1}:")
+        print(tab[i]["title"].capitalize(), ":")
         if "nested tabs" in tab[i]:
             lst = tab[i]["nested tabs"]
             for i in lst:
-                print(f"       - {i['title']}")
+                print(f"       - {i['title'].capitalize()}")
     return "These are the titles."
 
 
@@ -100,3 +101,7 @@ def nestedTabs(index):
         return tab
     else:
         return tab
+
+openTab()
+nestedTabs(1)
+displayTabs()
