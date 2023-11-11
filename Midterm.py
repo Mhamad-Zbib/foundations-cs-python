@@ -124,7 +124,6 @@ def saveTabs(file):
     if os.path.exists(file):
         with open(file, "w") as f:
             json.dump(tab, f, indent=4)
-        print(f"Tabs saved successfully to {file}.")
+        return f"Tabs saved successfully to {file}."
     else:
-        print("Please try again and enter a JSON file that exists.")    
-
+        return "Please try again and enter a JSON file that exists."   
