@@ -34,9 +34,7 @@ def openTab():
     title = input("Enter the title of the website: ")
     parent_url = input("Enter the url of the website: ")
     if validators.url(parent_url):
-        result = requests.get(parent_url)
-        doc = BeautifulSoup(result.text, "html.parser")
-        tab.append({"title": title, "url": parent_url, "content": doc.prettify()})
+        tab.append({"title": title, "url": parent_url})
         return tab
     else:
         print("Url is invalid, Please try again.")
@@ -56,11 +54,17 @@ def switchTab(index):
     lst = []
     if index == "":
         lst.append(tab[-1])
-        return lst[0]["content"]
-    elif index is not None:
-        if index >= 1 and index <= len(tab):
-            lst.append(tab[index - 1])
-            return lst[0]["content"]
+        result = requests.get(tab[0]["url"])
+        doc = BeautifulSoup(result.text, "html.parser")
+        return doc
+    elif index >= 1 and index <= len(tab):
+        lst.append(tab[index - 1])
+        result = requests.get(tab[0]["url"])
+        doc = BeautifulSoup(result.text, "html.parser")
+        return doc
+    else:
+        return "Please try again and enter a valid number of a tab."
+    
 
 
 def displayTabs():
@@ -123,5 +127,4 @@ def saveTabs(file):
         print(f"Tabs saved successfully to {file}.")
     else:
         print("Please try again and enter a JSON file that exists.")    
-
 
