@@ -101,7 +101,3 @@ def nestedTabs(index):
         return tab
     else:
         return tab
-
-openTab()
-nestedTabs(1)
-displayTabs()
