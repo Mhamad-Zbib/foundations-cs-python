@@ -78,8 +78,8 @@ def nestedTabs(index):
         print("Please try again and enter a valid number of a tab.")
     if index >= 1 and index <= len(tab):
         parent_tab = tab[index - 1]
-        title = input("Enter the title of the nested tab of the website: ")
-        child_url = input("Enter the url of the nested tab of the website: ")
+        title = input(f"Enter the title of the nested tab of the website {tab[index - 1]['title'].capitalize()}: ")
+        child_url = input(f"Enter the url of the nested tab of the website {tab[index - 1]['title'].capitalize()}: ")
         if validators.url(child_url):
             if child_url.startswith(parent_tab["url"]):
                 if "nested tabs" not in parent_tab:
