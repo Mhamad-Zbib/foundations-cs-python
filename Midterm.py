@@ -109,3 +109,7 @@ def nestedTabs(index):
         nestedTabs(index)
 
 
+def clearTabs():
+    tab.clear()
+    return f"Your tabs are clear. {tab}"
+
