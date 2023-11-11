@@ -74,13 +74,18 @@ def displayTabs():
 
 def nestedTabs(index):
     if index == "":
-        print("Please enter a number to specify which tab you would like to add in.")
-    if index < 1 and index > len(tab):
+        print(
+            "Please try again, and enter a number to specify which tab you would like to add in.")
+
+    if index < 1 or index > len(tab):
         print("Please try again and enter a valid number of a tab.")
     if index >= 1 and index <= len(tab):
         parent_tab = tab[index - 1]
-        title = input(f"Enter the title of the nested tab of the website {tab[index - 1]['title'].capitalize()}: ")
-        child_url = input(f"Enter the url of the nested tab of the website {tab[index - 1]['title'].capitalize()}: ")
+        title = input(
+            f"Enter the title of the nested tab of the website {tab[index - 1]['title'].capitalize()}: ")
+        child_url = input(
+            f"Enter the url of the nested tab of the website {tab[index - 1]['title'].capitalize()}: ")
+
         if validators.url(child_url):
             if child_url.startswith(parent_tab["url"]):
                 if "nested tabs" not in parent_tab:
@@ -93,11 +98,14 @@ def nestedTabs(index):
             print("Url is invalid, Please try again.")
 
     condition = input(
-        "If you want to add another nested tab to this tab type YES, if not type NO: "
-    ).lower()
+        "If you want to add another nested tab to this tab type YES, if not type NO: ").lower()
+
     if condition == "yes":
         nestedTabs(index)
     elif condition == "no":
         return tab
     else:
-        return tab
+        print("Please try again and enter Yes or No.")
+        nestedTabs(index)
+
+
