@@ -61,6 +61,16 @@ def switchTab(index):
             return lst[0]["content"]
 
 
+def displayTabs():
+    for i in range(len(tab)):
+        print(tab[i]["title"], ":")
+        if "nested tabs" in tab[i]:
+            lst = tab[i]["nested tabs"]
+            for i in lst:
+                print(f"       - {i['title']}")
+    return "These are the titles."
+
+
 def nestedTabs(index):
     if index == "":
         print("Please enter a number to specify which tab you would like to add in.")
