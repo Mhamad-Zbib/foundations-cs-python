@@ -1,6 +1,8 @@
-import validators
+import validators 
 from bs4 import BeautifulSoup
 import requests
+import json
+import os.path # To check the path of the file that the user should input exists
 
 print("------------")
 name = input("Enter you name: ")
@@ -112,4 +114,8 @@ def nestedTabs(index):
 def clearTabs():
     tab.clear()
     return f"Your tabs are clear. {tab}"
+
+def saveTabs(file):
+    if os.path.exists(file):
+
 
