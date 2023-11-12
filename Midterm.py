@@ -1,8 +1,8 @@
-import validators 
+import validators
 from bs4 import BeautifulSoup
 import requests
 import json
-import os.path # To check the path of the file that the user should input exists
+import os.path  # To check the path of the file that the user should input exists
 
 print("------------")
 name = input("Enter you name: ")
@@ -42,14 +42,18 @@ def openTab():
 
 def closeTab(index):
     if index == "":
-        print(f"Last tab with title {tab[-1]['title'].capitalize()} is removed, your tab now is:")
+        print(
+            f"Last tab with title {tab[-1]['title'].capitalize()} is removed, your tab now is:"
+        )
         tab.pop()
         return tab
     elif index is not None:
         if index >= 1 and index <= len(tab):
-            print(f"Tab number {index} with title {tab[index - 1]['title'].capitalize()} is removed your tab now is: ")
+            print(
+                f"Tab number {index} with title {tab[index - 1]['title'].capitalize()} is removed your tab now is: "
+            )
             tab.pop(index - 1)
-            return tab 
+            return tab
         else:
             return "Please enter a valid number of a tab."
 
@@ -68,7 +72,6 @@ def switchTab(index):
         return doc
     else:
         return "Please try again and enter a valid number of a tab."
-    
 
 
 def displayTabs():
@@ -86,9 +89,11 @@ def nestedTabs(index):
     if index >= 1 and index <= len(tab):
         parent_tab = tab[index - 1]
         title = input(
-            f"Enter the title of the nested tab of the website {tab[index - 1]['title'].capitalize()}: ")
+            f"Enter the title of the nested tab of the website {tab[index - 1]['title'].capitalize()}: "
+        )
         child_url = input(
-            f"Enter the url of the nested tab of the website {tab[index - 1]['title'].capitalize()}: ")
+            f"Enter the url of the nested tab of the website {tab[index - 1]['title'].capitalize()}: "
+        )
 
         if validators.url(child_url):
             if child_url.startswith(parent_tab["url"]):
@@ -103,7 +108,8 @@ def nestedTabs(index):
 
     print("------------")
     condition = input(
-        "If you want to add another nested tab to this tab type YES, if not type NO: ").lower()
+        "If you want to add another nested tab to this tab type YES, if not type NO: "
+    ).lower()
 
     if condition == "yes":
         print("------------")
@@ -111,7 +117,9 @@ def nestedTabs(index):
     elif condition == "no":
         print(f"Your tabs with nested tabs:\n {tab}")
     else:
-        print( f"Please try again and enter Yes or No. \n This is Your tab with nested tabs now:\n   {tab}" )
+        print(
+            f"Please try again and enter Yes or No. \n This is Your tab with nested tabs now:\n   {tab}"
+        )
 
 
 def clearTabs():
@@ -125,8 +133,8 @@ def saveTabs(file):
             json.dump(tab, f, indent=4)
         return f"Tabs saved successfully to: {file}."
     else:
-        return "Please try again and enter a JSON file that exists." 
-    
+        return "Please try again and enter a JSON file that exists."
+
 
 def importTabs(file):
     if os.path.exists(file):
@@ -135,86 +143,89 @@ def importTabs(file):
         return f"Tabs are successfully loaded from {file}: \n {doc}"
     else:
         return "Please try again and enter a JSON file that exists."
-    
 
 
 def main():
     choice = 0
     while choice != 9:
         displayMenu()
-        choice = int(input("Enter your choice: "))
+        choice = input("Enter your choice: ")
 
+        if choice.isdigit():
+            if int(choice) == 1:
+                print(openTab())
+                print("--------")
 
-        if choice == 1:
-            print(openTab())
-            print("--------")
-
-
-        if choice == 2:
-            index = input("Enter the number of which tab you want to close, OR press enter to remove the last tab: ")
-            if index == "":
-                print(closeTab(index))
-            elif index.isdigit():
-                if int(index) > 0:
-                    print(closeTab(int(index)))
+            if int(choice) == 2:
+                index = input(
+                    "Enter the number of which tab you want to close, OR press enter to remove the last tab: "
+                )
+                if index == "":
+                    print(closeTab(index))
+                elif index.isdigit():
+                    if int(index) > 0:
+                        print(closeTab(int(index)))
+                    else:
+                        print("Enter a number bigger than 0")
                 else:
-                    print("Enter a number bigger than 0")
-            else:
-                print("Invalid input. Please enter a valid number!")
-        
+                    print("Invalid input. Please enter a valid number!")
 
-        if choice == 3:
-            index = input("Enter the number of which tab you would like to display it's content: ")
-            if index == "":
-                print(switchTab(index))
-            elif index.isdigit():
-                if int(index) > 0 and int(index) <= len(tab):
-                    print(switchTab(int(index)))
+            if int(choice) == 3:
+                index = input(
+                    "Enter the number of which tab you would like to display it's content: "
+                )
+                if index == "":
+                    print(switchTab(index))
+                elif index.isdigit():
+                    if int(index) > 0 and int(index) <= len(tab):
+                        print(switchTab(int(index)))
+                    else:
+                        print(
+                            "Invalid input. Please enter a valid number of a Tab! (bigger than 0)"
+                        )
                 else:
-                    print("Invalid input. Please enter a valid number of a Tab! (bigger than 0)")
-            else:
-                print("Invalid input. Please enter a valid number of a Tab! (bigger than 0)")
+                    print(
+                        "Invalid input. Please enter a valid number of a Tab! (bigger than 0)"
+                    )
 
-
-        if choice == 4:
+            if int(choice) == 4:
                 print(displayTabs())
                 print("---------")
-        
 
-        if choice == 5:
-            index = input("Enter a number to specify which tab you would like to add nested tabs in: ")
-            if index.isdigit():
-                if int(index) < 1 or int(index) > len(tab):
-                    print("Please try again and enter a valid number of a tab.")
-                elif int(index) >= 1 and int(index) <= len(tab):
-                    nestedTabs(int(index))
+            if int(choice) == 5:
+                index = input(
+                    "Enter a number to specify which tab you would like to add nested tabs in: "
+                )
+                if index.isdigit():
+                    if int(index) < 1 or int(index) > len(tab):
+                        print("Please try again and enter a valid number of a tab.")
+                    elif int(index) >= 1 and int(index) <= len(tab):
+                        nestedTabs(int(index))
+                    else:
+                        print("Please try again and enter a valid number of a tab.")
                 else:
                     print("Please try again and enter a valid number of a tab.")
-            else:
-                print("Please try again and enter a valid number of a tab.")
-            print("------------")
-        
+                print("------------")
 
-        if choice == 6:
-            print(clearTabs())
-            print("------------")
+            if int(choice) == 6:
+                print(clearTabs())
+                print("------------")
 
+            if int(choice) == 7:
+                file_path = input("Please enter a file path in JSON format: ")
+                print(saveTabs(file_path))
+                print("------------")
 
-        if choice == 7:
-            file_path = input("Please enter a file path in JSON format: ")
-            print(saveTabs(file_path))
-            print("------------")
-        
+            if int(choice) == 8:
+                file = input("Please enter a file path in JSON format: ")
+                print(importTabs(file))
+                print("------------")
 
-        if choice == 8:
-            file = input("Please enter a file path in JSON format: ")
-            print(importTabs(file))
-            print("------------")
-
-
-        if choice == 9:
-            print("Hope you enjoyed!")
-            break
+            if int(choice) == 9:
+                print("------------")
+                print("Hope you enjoyed!")
+                print("------------")
+                break
 
 
 main()
