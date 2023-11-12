@@ -211,4 +211,10 @@ def main():
             print(importTabs(file))
             print("------------")
 
+
+        if choice == 9:
+            print("Hope you enjoyed!")
+            break
+
+
 main()
