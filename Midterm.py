@@ -123,7 +123,7 @@ def saveTabs(file):
     if os.path.exists(file):
         with open(file, "w") as f:
             json.dump(tab, f, indent=4)
-        return f"Tabs saved successfully to {file}."
+        return f"Tabs saved successfully to: {file}."
     else:
         return "Please try again and enter a JSON file that exists." 
     
@@ -198,5 +198,9 @@ def main():
             print(clearTabs())
             print("------------")
 
-        
+        if choice == 7:
+            file_path = input("Please enter a file path in JSON format: ")
+            print(saveTabs(file_path))
+            print("------------")
+
 main()
