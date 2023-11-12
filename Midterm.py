@@ -145,10 +145,13 @@ def main():
         displayMenu()
         choice = input("Enter your choice: ")
 
+
         if choice.isdigit():
             if int(choice) == 1:
                 print(openTab())
                 print("--------")
+
+
 
             if len(tab) != 0:
                 if int(choice) == 2:
@@ -167,6 +170,8 @@ def main():
                 print("------------")
                 print(f"Your list is already emtpy {tab}.")
                 print("------------")
+
+
 
 
             if len(tab) != 0:
@@ -190,22 +195,34 @@ def main():
                 print("------------")
 
 
-            if int(choice) == 4:
-                print(displayTabs())
-                print("---------")
 
-            if int(choice) == 5:
-                index = input(
-                    "Enter a number to specify which tab you would like to add nested tabs in: ")
-                if index.isdigit():
-                    if int(index) < 1 or int(index) > len(tab):
-                        print("Please try again and enter a valid number of a tab.")
-                    elif int(index) >= 1 and int(index) <= len(tab):
-                        nestedTabs(int(index))
+            if len(tab) != 0:
+                if int(choice) == 4:
+                    print(displayTabs())
+                    print("---------")
+            else:
+                print("------------")
+                print(f"Your tab is already empty {tab}.")
+                print("------------")
+
+
+            if len(tab) != 0:
+                if int(choice) == 5:
+                    index = input(
+                        "Enter a number to specify which tab you would like to add nested tabs in: ")
+                    if index.isdigit():
+                        if int(index) < 1 or int(index) > len(tab):
+                            print("Please try again and enter a valid number of a tab.")
+                        elif int(index) >= 1 and int(index) <= len(tab):
+                            nestedTabs(int(index))
+                        else:
+                            print("Please try again and enter a valid number of a tab.")
                     else:
                         print("Please try again and enter a valid number of a tab.")
-                else:
-                    print("Please try again and enter a valid number of a tab.")
+                    print("------------")
+            else:
+                print("------------")
+                print(f"Your tab is already empty {tab} !\nOpen a tab first using choice 1 to add tabs in it.")
                 print("------------")
 
             if int(choice) == 6:
