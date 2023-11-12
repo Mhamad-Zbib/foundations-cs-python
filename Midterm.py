@@ -268,24 +268,37 @@ def main(): # O(N^2), N being the length of the list , this is the worst case si
                     print(f"Your tab is already empty {tab} !\nOpen a tab first using choice 1.")
                     print("------------")
                 elif len(tab) != 0:
-                    file_path = input("Please enter a file path in JSON format: ")
-                    print(saveTabs(file_path))
-                    print("------------")
+                    file_path = input("Enter a file path in JSON format: ")
+                    if file_path.startswith("C:"):
+                        print("--------------")
+                        print(saveTabs(file_path))
+                        print("------------")
+                    else:
+                        print("------------")
+                        print("Try again and enter a file path in JSON format")
+                        print("------------")
+                else:
+                    print("Try again and enter a file path in JSON format")
 
 
 
             if int(choice) == 8:
-                file = input("Please enter a file path in JSON format: ")
-                if os.path.getsize(file) == 0:
+                file = input("Enter a file path in JSON format: ")
+                if file.startswith("C:"):
+                    if os.path.getsize(file) == 0:
+                        print("------------")
+                        print(f"Your file is empty. \nPlease make sure to use choice 7 first.")
+                        print("------------")
+                    else:
+                        print("------------")
+                        print(importTabs(file))
+                        print("------------")
+                else:
                     print("------------")
-                    print(f"Your file is empty. \nPlease make sure to use choice 7 first.")
-                    print("------------")
-                elif os.path.getsize(file) != 0:
-                    print("------------")
-                    print(importTabs(file))
+                    print("Try again and enter a file path in JSON format")
                     print("------------")
 
-            
+
 
             if int(choice) == 9:
                 print("------------")
