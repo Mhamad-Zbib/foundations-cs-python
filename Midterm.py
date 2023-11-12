@@ -153,8 +153,12 @@ def main():
 
 
 
-            if len(tab) != 0:
-                if int(choice) == 2:
+            if int(choice) == 2:
+                if len(tab) == 0:
+                    print("------------")
+                    print(f"Your tab is already empty {tab}.")
+                    print("------------")
+                elif len(tab) != 0:
                     index = input(
                         "Enter the number of which tab you want to close, OR press enter to remove the last tab: ")
                     if index == "":
@@ -166,16 +170,16 @@ def main():
                             print("Enter a number bigger than 0")
                     else:
                         print("Invalid input. Please enter a valid number!")
-            else:
-                print("------------")
-                print(f"Your list is already emtpy {tab}.")
-                print("------------")
 
 
 
 
-            if len(tab) != 0:
-                if int(choice) == 3:
+            if int(choice) == 3:
+                if len(tab) == 0:
+                    print("------------")
+                    print(f"Your tab is already empty {tab}. \nOpen a tab first using choice 1.")
+                    print("------------")
+                elif len(tab) != 0:
                     index = input(
                         "Enter the number of which tab you would like to display it's content: ")
                     if index == "":
@@ -189,25 +193,29 @@ def main():
                     else:
                         print(
                             "Invalid input. Please enter a valid number of a Tab! (bigger than 0)")
-            else:
-                print("------------")
-                print(f"Your tab is already empty {tab} !\nOpen a tab first using choice 1 to display it's content.")
-                print("------------")
 
 
 
-            if len(tab) != 0:
-                if int(choice) == 4:
+
+
+            if int(choice) == 4:
+                if len(tab) == 0:
+                    print("------------")
+                    print(f"Your tab is already empty {tab}. \nOpen a tab first using choice 1.")
+                    print("------------")
+                elif len(tab) != 0:
                     print(displayTabs())
                     print("---------")
-            else:
-                print("------------")
-                print(f"Your tab is already empty {tab}.")
-                print("------------")
 
 
-            if len(tab) != 0:
-                if int(choice) == 5:
+
+
+            if int(choice) == 5:
+                if len(tab) == 0:
+                    print("------------")
+                    print(f"Your tab is already empty {tab}. \nOpen a tab first using choice 1.")
+                    print("------------")
+                elif len(tab) != 0:
                     index = input(
                         "Enter a number to specify which tab you would like to add nested tabs in: ")
                     if index.isdigit():
@@ -220,30 +228,55 @@ def main():
                     else:
                         print("Please try again and enter a valid number of a tab.")
                     print("------------")
-            else:
-                print("------------")
-                print(f"Your tab is already empty {tab} !\nOpen a tab first using choice 1 to add tabs in it.")
-                print("------------")
+
+
 
             if int(choice) == 6:
-                print(clearTabs())
-                print("------------")
+                if len(tab) == 0:
+                    print("------------")
+                    print(f"Your tab is already empty {tab}.")
+                    print("------------")
+                elif len(tab) != 0:
+                    print(clearTabs())
+                    print("------------")
+
+
 
             if int(choice) == 7:
-                file_path = input("Please enter a file path in JSON format: ")
-                print(saveTabs(file_path))
-                print("------------")
+                if len(tab) == 0:
+                    print("------------")
+                    print(f"Your tab is already empty {tab} !\nOpen a tab first using choice 1.")
+                    print("------------")
+                elif tab(0) != 0:
+                    file_path = input("Please enter a file path in JSON format: ")
+                    print(saveTabs(file_path))
+                    print("------------")
+
+
 
             if int(choice) == 8:
                 file = input("Please enter a file path in JSON format: ")
-                print(importTabs(file))
-                print("------------")
+                if os.path.getsize(file) == 0:
+                    print("------------")
+                    print(f"Your file is empty. \nPlease make sure to use choice 7 first.")
+                    print("------------")
+                elif os.path.getsize(file) != 0:
+                    print("------------")
+                    print(importTabs(file))
+                    print("------------")
+
+            
 
             if int(choice) == 9:
                 print("------------")
                 print("Hope you enjoyed!")
                 print("------------")
                 break
+            
+            if int(choice) > 9:
+                print("------------")
+                print("Please try again and enter a number of which choice you would like to choose.")
+                print("------------")
 
         else:
             print("------------")
@@ -251,4 +284,4 @@ def main():
             print("------------")
 
 
-main()
+print(main())
