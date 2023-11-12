@@ -37,7 +37,7 @@ def openTab():
         tab.append({"title": title, "url": parent_url})
         return tab
     else:
-        print("Url is invalid, Please try again.")
+        return "Url is invalid, Please try again."
 
 
 def closeTab(index):
@@ -143,3 +143,9 @@ def main():
     while choice != 9:
         displayMenu()
         choice = int(input("Enter your choice: "))
+
+        if choice == 1:
+            print(openTab())
+            print("--------")
+
+main()
