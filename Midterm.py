@@ -42,10 +42,12 @@ def openTab():
 
 def closeTab(index):
     if index == "":
+        print(f"Last tab with title {tab[-1]['title'].capitalize()} is removed, your tab now is:")
         tab.pop()
         return tab
     elif index is not None:
         if index >= 1 and index <= len(tab):
+            print(f"Tab number {index} with title {tab[index - 1]['title'].capitalize()} is removed your tab now is: ")
             tab.pop(index - 1)
             return tab 
         else:
@@ -151,10 +153,10 @@ def main():
         if choice == 2:
             index = input("Enter the number of which tab you want to close, OR press enter to remove the last tab: ")
             if index == "":
-                closeTab(index)
+                print(closeTab(index))
             elif index.isdigit():
                 if int(index) > 0:
-                    closeTab(int(index))
+                    print(closeTab(int(index)))
                 else:
                     print("Enter a number bigger than 0")
             else:
