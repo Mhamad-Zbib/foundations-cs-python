@@ -43,15 +43,13 @@ def openTab():
 def closeTab(index):
     if index == "":
         print(
-            f"Last tab with title {tab[-1]['title'].capitalize()} is removed, your tab now is:"
-        )
+            f"Last tab with title {tab[-1]['title'].capitalize()} is removed, your tab now is:")
         tab.pop()
         return tab
     elif index is not None:
         if index >= 1 and index <= len(tab):
             print(
-                f"Tab number {index} with title {tab[index - 1]['title'].capitalize()} is removed your tab now is: "
-            )
+                f"Tab number {index} with title {tab[index - 1]['title'].capitalize()} is removed your tab now is: ")
             tab.pop(index - 1)
             return tab
         else:
@@ -89,11 +87,9 @@ def nestedTabs(index):
     if index >= 1 and index <= len(tab):
         parent_tab = tab[index - 1]
         title = input(
-            f"Enter the title of the nested tab of the website {tab[index - 1]['title'].capitalize()}: "
-        )
+            f"Enter the title of the nested tab of the website {tab[index - 1]['title'].capitalize()}: ")
         child_url = input(
-            f"Enter the url of the nested tab of the website {tab[index - 1]['title'].capitalize()}: "
-        )
+            f"Enter the url of the nested tab of the website {tab[index - 1]['title'].capitalize()}: ")
 
         if validators.url(child_url):
             if child_url.startswith(parent_tab["url"]):
@@ -108,8 +104,7 @@ def nestedTabs(index):
 
     print("------------")
     condition = input(
-        "If you want to add another nested tab to this tab type YES, if not type NO: "
-    ).lower()
+        "If you want to add another nested tab to this tab type YES, if not type NO: ").lower()
 
     if condition == "yes":
         print("------------")
@@ -118,8 +113,7 @@ def nestedTabs(index):
         print(f"Your tabs with nested tabs:\n {tab}")
     else:
         print(
-            f"Please try again and enter Yes or No. \n This is Your tab with nested tabs now:\n   {tab}"
-        )
+            f"Please try again and enter Yes or No. \n This is Your tab with nested tabs now:\n   {tab}")
 
 
 def clearTabs():
@@ -156,24 +150,27 @@ def main():
                 print(openTab())
                 print("--------")
 
-            if int(choice) == 2:
-                index = input(
-                    "Enter the number of which tab you want to close, OR press enter to remove the last tab: "
-                )
-                if index == "":
-                    print(closeTab(index))
-                elif index.isdigit():
-                    if int(index) > 0:
-                        print(closeTab(int(index)))
+            if len(tab) != 0:
+                if int(choice) == 2:
+                    index = input(
+                        "Enter the number of which tab you want to close, OR press enter to remove the last tab: ")
+                    if index == "":
+                        print(closeTab(index))
+                    elif index.isdigit():
+                        if int(index) > 0:
+                            print(closeTab(int(index)))
+                        else:
+                            print("Enter a number bigger than 0")
                     else:
-                        print("Enter a number bigger than 0")
-                else:
-                    print("Invalid input. Please enter a valid number!")
+                        print("Invalid input. Please enter a valid number!")
+            else:
+                print("------------")
+                print(f"Your list is already emtpy {tab}")
+                print("------------")
 
             if int(choice) == 3:
                 index = input(
-                    "Enter the number of which tab you would like to display it's content: "
-                )
+                    "Enter the number of which tab you would like to display it's content: ")
                 if index == "":
                     print(switchTab(index))
                 elif index.isdigit():
@@ -181,12 +178,10 @@ def main():
                         print(switchTab(int(index)))
                     else:
                         print(
-                            "Invalid input. Please enter a valid number of a Tab! (bigger than 0)"
-                        )
+                            "Invalid input. Please enter a valid number of a Tab! (bigger than 0)")
                 else:
                     print(
-                        "Invalid input. Please enter a valid number of a Tab! (bigger than 0)"
-                    )
+                        "Invalid input. Please enter a valid number of a Tab! (bigger than 0)")
 
             if int(choice) == 4:
                 print(displayTabs())
@@ -194,8 +189,7 @@ def main():
 
             if int(choice) == 5:
                 index = input(
-                    "Enter a number to specify which tab you would like to add nested tabs in: "
-                )
+                    "Enter a number to specify which tab you would like to add nested tabs in: ")
                 if index.isdigit():
                     if int(index) < 1 or int(index) > len(tab):
                         print("Please try again and enter a valid number of a tab.")
@@ -227,11 +221,10 @@ def main():
                 print("------------")
                 break
 
-
         else:
             print("------------")
             print("Please try again and enter a number of which choice you would like to choose.")
             print("------------")
 
-            
+
 main()
