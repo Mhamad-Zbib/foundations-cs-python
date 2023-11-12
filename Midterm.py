@@ -165,23 +165,30 @@ def main():
                         print("Invalid input. Please enter a valid number!")
             else:
                 print("------------")
-                print(f"Your list is already emtpy {tab}")
+                print(f"Your list is already emtpy {tab}.")
                 print("------------")
 
-            if int(choice) == 3:
-                index = input(
-                    "Enter the number of which tab you would like to display it's content: ")
-                if index == "":
-                    print(switchTab(index))
-                elif index.isdigit():
-                    if int(index) > 0 and int(index) <= len(tab):
-                        print(switchTab(int(index)))
+
+            if len(tab) != 0:
+                if int(choice) == 3:
+                    index = input(
+                        "Enter the number of which tab you would like to display it's content: ")
+                    if index == "":
+                        print(switchTab(index))
+                    elif index.isdigit():
+                        if int(index) > 0 and int(index) <= len(tab):
+                            print(switchTab(int(index)))
+                        else:
+                            print(
+                                "Invalid input. Please enter a valid number of a Tab! (bigger than 0)")
                     else:
                         print(
                             "Invalid input. Please enter a valid number of a Tab! (bigger than 0)")
-                else:
-                    print(
-                        "Invalid input. Please enter a valid number of a Tab! (bigger than 0)")
+            else:
+                print("------------")
+                print(f"Your tab is already empty {tab} !\nOpen a tab first using choice 1 to display it's content.")
+                print("------------")
+
 
             if int(choice) == 4:
                 print(displayTabs())
