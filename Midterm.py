@@ -1,8 +1,9 @@
-import validators
-from bs4 import BeautifulSoup
-import requests
-import json
-import os.path  # To check the path of the file that the user should input exists
+import validators # To check if the user's url is valid.
+from bs4 import BeautifulSoup # To scrape information from web pages and to make the web page text from requests more readable.
+import requests # To get the document behind the URL, and to feed that document to Beautifoul soup so .
+import json # To save the current state of open tabs(data) in a json file.
+import os.path  # To check the path of the file that the user should input exists.
+
 
 print("------------")
 name = input("Enter you name: ")
@@ -31,6 +32,8 @@ tab = []
 
 
 def openTab():
+    # Allowing the user to input website title and URL and then adding it to the global variable "tab".
+    # And checking if the url inserted by the user is valid.
     title = input("Enter the title of the website: ")
     parent_url = input("Enter the url of the website: ")
     if validators.url(parent_url):
@@ -41,6 +44,7 @@ def openTab():
 
 
 def closeTab(index):
+    # This option gives the user a choice to close the last tab he opened or a tab he choosed it to close it.
     if index == "":
         print(
             f"Last tab with title {tab[-1]['title'].capitalize()} is removed, your tab now is:")
@@ -57,6 +61,7 @@ def closeTab(index):
 
 
 def switchTab(index):
+    # This function permits the user to display the content(HTML code) of the last website or a any website he opened.
     lst = []
     if index == "":
         lst.append(tab[-1])
@@ -73,6 +78,8 @@ def switchTab(index):
 
 
 def displayTabs():
+    # Choosing this function by the user will display all the titles of all open tabs,
+    #  and if there is any nested tabs it will display them hierarchically.
     for i in range(len(tab)):
         print(f"the titles of tab {i + 1}:")
         print(tab[i]["title"].capitalize(), ":")
@@ -84,6 +91,7 @@ def displayTabs():
 
 
 def nestedTabs(index):
+    # This option will permit the user to add as many nested tabs he wants to any tab he already opened. 
     if index >= 1 and index <= len(tab):
         parent_tab = tab[index - 1]
         title = input(
@@ -92,7 +100,7 @@ def nestedTabs(index):
             f"Enter the url of the nested tab of the website {tab[index - 1]['title'].capitalize()}: ")
 
         if validators.url(child_url):
-            if child_url.startswith(parent_tab["url"]):
+            if child_url.startswith(parent_tab["url"]):  # https://www.w3schools.com/python/ref_string_startswith.asp
                 if "nested tabs" not in parent_tab:
                     parent_tab["nested tabs"] = []
 
@@ -117,11 +125,13 @@ def nestedTabs(index):
 
 
 def clearTabs():
+    # This function will delete all opened tabs
     tab.clear()
     return f"Your tabs are clear.\n {tab}"
 
 
 def saveTabs(file):
+    # Here the function will save opened tabs in the user's JSON file path.
     if os.path.exists(file):
         with open(file, "w") as f:
             json.dump(tab, f, indent=4)
@@ -131,7 +141,8 @@ def saveTabs(file):
 
 
 def importTabs(file):
-    if os.path.exists(file):
+    # After saving the opened tabs in the file path the user can load(display) the tabs from the file.
+    if os.path.exists(file): # https://docs.python.org/3/library/os.path.html#module-os.path
         with open(file) as f:
             doc = json.load(f)
         return f"Tabs are successfully loaded from {file}: \n {doc}"
