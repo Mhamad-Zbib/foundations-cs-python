@@ -178,5 +178,15 @@ def main():
                 print(displayTabs())
                 print("---------")
         
-
+        if choice == 5:
+            index = input("Enter a number to specify which tab you would like to add nested tabs in: ")
+            if index.isdigit():
+                if int(index) < 1 or int(index) > len(tab):
+                    print("Please try again and enter a valid number of a tab.")
+                elif int(index) >= 1 and int(index) <= len(tab):
+                    nestedTabs(int(index))
+                else:
+                    print("Please try again and enter a valid number of a tab.")
+            else:
+                print("Please try again and enter a valid number of a tab.")
 main()
