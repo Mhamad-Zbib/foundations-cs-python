@@ -132,7 +132,7 @@ def importTabs(file):
     if os.path.exists(file):
         with open(file) as f:
             doc = json.load(f)
-        return f"Tabs are successfully loaded from {file} \n {doc}"
+        return f"Tabs are successfully loaded from {file}: \n {doc}"
     else:
         return "Please try again and enter a JSON file that exists."
     
@@ -194,13 +194,21 @@ def main():
                 print("Please try again and enter a valid number of a tab.")
             print("------------")
         
+
         if choice == 6:
             print(clearTabs())
             print("------------")
 
+
         if choice == 7:
             file_path = input("Please enter a file path in JSON format: ")
             print(saveTabs(file_path))
+            print("------------")
+        
+
+        if choice == 8:
+            file = input("Please enter a file path in JSON format: ")
+            print(importTabs(file))
             print("------------")
 
 main()
