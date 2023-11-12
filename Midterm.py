@@ -135,3 +135,11 @@ def importTabs(file):
         return f"Tabs are successfully loaded from {file} \n {doc}"
     else:
         return "Please try again and enter a JSON file that exists."
+    
+
+
+def main():
+    choice = 0
+    while choice != 9:
+        displayMenu()
+        choice = int(input("Enter your choice: "))
