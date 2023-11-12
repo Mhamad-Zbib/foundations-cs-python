@@ -267,7 +267,7 @@ def main(): # O(N^2), N being the length of the list , this is the worst case si
                     print("------------")
                     print(f"Your tab is already empty {tab} !\nOpen a tab first using choice 1.")
                     print("------------")
-                elif tab(0) != 0:
+                elif len(tab) != 0:
                     file_path = input("Please enter a file path in JSON format: ")
                     print(saveTabs(file_path))
                     print("------------")
