@@ -228,4 +228,10 @@ def main():
                 break
 
 
+        else:
+            print("------------")
+            print("Please try again and enter a number of which choice you would like to choose.")
+            print("------------")
+
+            
 main()
