@@ -27,6 +27,7 @@ def displayMenu(): # O(1).
         "     9. Exit"
     )
 
+# ----------------------------------------------------------------------------------------------------------------------
 
 tab = []
 
@@ -42,6 +43,7 @@ def openTab(): # O(1).
     else:
         return "-------\nUrl is invalid, Please try again."
 
+# ----------------------------------------------------------------------------------------------------------------------
 
 def closeTab(index): # O(1).
     # This option gives the user a choice to close the last tab he opened or a tab he choosed it to close it.
@@ -59,6 +61,7 @@ def closeTab(index): # O(1).
         else:
             return "Please enter a valid number of a tab."
 
+# ----------------------------------------------------------------------------------------------------------------------
 
 def switchTab(index): # O(1).
     # This function permits the user to display the content(HTML code) of the last website or a any website he opened.
@@ -76,6 +79,7 @@ def switchTab(index): # O(1).
     else:
         return "Please try again and enter a valid number of a tab."
 
+# ----------------------------------------------------------------------------------------------------------------------
 
 def displayTabs(): # O(N^2), N being the length of the list.
     # Choosing this function by the user will display all the titles of all open tabs,
@@ -89,6 +93,7 @@ def displayTabs(): # O(N^2), N being the length of the list.
                 print(f"       - {i['title'].capitalize()}")
     return "These are the titles."
 
+# ----------------------------------------------------------------------------------------------------------------------
 
 def nestedTabs(index): # O(N), N being the length of the list.
     # This option will permit the user to add as many nested tabs he wants to any tab he already opened. 
@@ -123,12 +128,14 @@ def nestedTabs(index): # O(N), N being the length of the list.
         print(
             f"Please try again and enter Yes or No. \n This is Your tab with nested tabs now:\n   {tab}")
 
+# ----------------------------------------------------------------------------------------------------------------------
 
 def clearTabs(): # O(1).
     # This function will delete all opened tabs
     tab.clear()
     return f"Your tabs are clear.\n {tab}"
 
+# ----------------------------------------------------------------------------------------------------------------------
 
 def saveTabs(file): # O(1).
     # Here the function will save opened tabs in the user's JSON file path.
@@ -139,6 +146,7 @@ def saveTabs(file): # O(1).
     else:
         return "Please try again and enter a JSON file that exists."
 
+# ----------------------------------------------------------------------------------------------------------------------
 
 def importTabs(file): # O(1)
     # After saving the opened tabs in the file path the user can load(display) the tabs from the file.
@@ -149,6 +157,7 @@ def importTabs(file): # O(1)
     else:
         return "Please try again and enter a JSON file that exists."
 
+# ----------------------------------------------------------------------------------------------------------------------
 
 def main(): # O(N^2), N being the length of the list , this is the worst case since the displayTabs function has the worst case between all functions O(N^2).
     choice = 0
