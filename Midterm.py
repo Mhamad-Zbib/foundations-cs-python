@@ -81,12 +81,6 @@ def displayTabs():
 
 
 def nestedTabs(index):
-    if index == "":
-        print(
-            "Please try again, and enter a number to specify which tab you would like to add in.")
-
-    if index < 1 or index > len(tab):
-        print("Please try again and enter a valid number of a tab.")
     if index >= 1 and index <= len(tab):
         parent_tab = tab[index - 1]
         title = input(
@@ -105,16 +99,17 @@ def nestedTabs(index):
         else:
             print("Url is invalid, Please try again.")
 
+    print("------------")
     condition = input(
         "If you want to add another nested tab to this tab type YES, if not type NO: ").lower()
 
     if condition == "yes":
+        print("------------")
         nestedTabs(index)
     elif condition == "no":
-        return tab
+        print(f"Your tabs with nested tabs:\n {tab}")
     else:
-        print("Please try again and enter Yes or No.")
-        nestedTabs(index)
+        print( f"Please try again and enter Yes or No. \n This is Your tab with nested tabs now:\n   {tab}" )
 
 
 def clearTabs():
@@ -178,5 +173,10 @@ def main():
             else:
                 print("Invalid input. Please enter a valid number of a Tab! (bigger than 0)")
 
+
+        if choice == 4:
+                print(displayTabs())
+                print("---------")
+        
 
 main()
