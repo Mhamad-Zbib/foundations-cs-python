@@ -43,11 +43,13 @@ def openTab():
 def closeTab(index):
     if index == "":
         tab.pop()
+        return tab
     elif index is not None:
         if index >= 1 and index <= len(tab):
             tab.pop(index - 1)
+            return tab 
         else:
-            print("Please enter a valid number of a tab.")
+            return "Please enter a valid number of a tab."
 
 
 def switchTab(index):
