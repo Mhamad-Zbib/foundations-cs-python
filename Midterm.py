@@ -116,7 +116,7 @@ def nestedTabs(index):
 
 def clearTabs():
     tab.clear()
-    return f"Your tabs are clear. {tab}"
+    return f"Your tabs are clear.\n {tab}"
 
 
 def saveTabs(file):
@@ -180,6 +180,7 @@ def main():
                 print(displayTabs())
                 print("---------")
         
+
         if choice == 5:
             index = input("Enter a number to specify which tab you would like to add nested tabs in: ")
             if index.isdigit():
@@ -191,4 +192,11 @@ def main():
                     print("Please try again and enter a valid number of a tab.")
             else:
                 print("Please try again and enter a valid number of a tab.")
+            print("------------")
+        
+        if choice == 6:
+            print(clearTabs())
+            print("------------")
+
+        
 main()
