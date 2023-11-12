@@ -129,6 +129,7 @@ def saveTabs(file):
         return f"Tabs saved successfully to {file}."
     else:
         return "Please try again and enter a JSON file that exists." 
+    
 
 def importTabs(file):
     if os.path.exists(file):
@@ -149,5 +150,18 @@ def main():
         if choice == 1:
             print(openTab())
             print("--------")
+
+        if choice == 2:
+            index = input("Enter the number of which tab you want to close, OR press enter to remove the last tab: ")
+            if index == "":
+                closeTab(index)
+            elif index.isdigit():
+                if int(index) > 0:
+                    closeTab(int(index))
+                else:
+                    print("Enter a number bigger than 0")
+            else:
+                print("Invalid input. Please enter a valid number!")
+
 
 main()
