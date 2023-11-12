@@ -147,9 +147,11 @@ def main():
         displayMenu()
         choice = int(input("Enter your choice: "))
 
+
         if choice == 1:
             print(openTab())
             print("--------")
+
 
         if choice == 2:
             index = input("Enter the number of which tab you want to close, OR press enter to remove the last tab: ")
@@ -162,6 +164,19 @@ def main():
                     print("Enter a number bigger than 0")
             else:
                 print("Invalid input. Please enter a valid number!")
+        
+
+        if choice == 3:
+            index = input("Enter the number of which tab you would like to display it's content: ")
+            if index == "":
+                print(switchTab(index))
+            elif index.isdigit():
+                if int(index) > 0 and int(index) <= len(tab):
+                    print(switchTab(int(index)))
+                else:
+                    print("Invalid input. Please enter a valid number of a Tab! (bigger than 0)")
+            else:
+                print("Invalid input. Please enter a valid number of a Tab! (bigger than 0)")
 
 
 main()
