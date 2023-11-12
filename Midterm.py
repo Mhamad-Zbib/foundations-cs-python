@@ -317,4 +317,4 @@ def main(): # O(N^2), N being the length of the list , this is the worst case si
             print("------------")
 
 
-print(main())
+main()
