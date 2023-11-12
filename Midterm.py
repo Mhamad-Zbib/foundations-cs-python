@@ -12,7 +12,7 @@ print(f"Welcome to the Browser Tabs Simulation {name.capitalize()}!")
 print("------------")
 
 
-def displayMenu():
+def displayMenu(): # O(1).
     # The menu is here to display what options the user can pick.
     print(
         "The menu:\n"
@@ -31,7 +31,7 @@ def displayMenu():
 tab = []
 
 
-def openTab():
+def openTab(): # O(1).
     # Allowing the user to input website title and URL and then adding it to the global variable "tab".
     # And checking if the url inserted by the user is valid.
     title = input("Enter the title of the website: ")
@@ -40,10 +40,10 @@ def openTab():
         tab.append({"title": title, "url": parent_url})
         return tab
     else:
-        return "Url is invalid, Please try again."
+        return "-------\nUrl is invalid, Please try again."
 
 
-def closeTab(index):
+def closeTab(index): # O(1).
     # This option gives the user a choice to close the last tab he opened or a tab he choosed it to close it.
     if index == "":
         print(
@@ -60,7 +60,7 @@ def closeTab(index):
             return "Please enter a valid number of a tab."
 
 
-def switchTab(index):
+def switchTab(index): # O(1).
     # This function permits the user to display the content(HTML code) of the last website or a any website he opened.
     lst = []
     if index == "":
@@ -77,7 +77,7 @@ def switchTab(index):
         return "Please try again and enter a valid number of a tab."
 
 
-def displayTabs():
+def displayTabs(): # O(N^2), N being the length of the list.
     # Choosing this function by the user will display all the titles of all open tabs,
     #  and if there is any nested tabs it will display them hierarchically.
     for i in range(len(tab)):
@@ -90,7 +90,7 @@ def displayTabs():
     return "These are the titles."
 
 
-def nestedTabs(index):
+def nestedTabs(index): # O(N), N being the length of the list.
     # This option will permit the user to add as many nested tabs he wants to any tab he already opened. 
     if index >= 1 and index <= len(tab):
         parent_tab = tab[index - 1]
@@ -124,13 +124,13 @@ def nestedTabs(index):
             f"Please try again and enter Yes or No. \n This is Your tab with nested tabs now:\n   {tab}")
 
 
-def clearTabs():
+def clearTabs(): # O(1).
     # This function will delete all opened tabs
     tab.clear()
     return f"Your tabs are clear.\n {tab}"
 
 
-def saveTabs(file):
+def saveTabs(file): # O(1).
     # Here the function will save opened tabs in the user's JSON file path.
     if os.path.exists(file):
         with open(file, "w") as f:
@@ -140,7 +140,7 @@ def saveTabs(file):
         return "Please try again and enter a JSON file that exists."
 
 
-def importTabs(file):
+def importTabs(file): # O(1)
     # After saving the opened tabs in the file path the user can load(display) the tabs from the file.
     if os.path.exists(file): # https://docs.python.org/3/library/os.path.html#module-os.path
         with open(file) as f:
@@ -150,7 +150,7 @@ def importTabs(file):
         return "Please try again and enter a JSON file that exists."
 
 
-def main():
+def main(): # O(N^2), N being the length of the list , this is the worst case since the displayTabs function has the worst case between all functions O(N^2).
     choice = 0
     while choice != 9:
         displayMenu()
