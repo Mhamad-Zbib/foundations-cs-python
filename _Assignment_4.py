@@ -26,3 +26,9 @@ class LinkedList:
 
     def addNode(self, value, position):
         node = Node(value)
+
+        if position == 0:
+            node.next = self.head
+            self.head = node
+            return
+        
