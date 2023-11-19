@@ -31,4 +31,9 @@ class LinkedList:
             node.next = self.head
             self.head = node
             return
-        
+
+        current = self.head
+        count = 0
+        while count < position - 1 and current.next is not None:
+            current = current.next
+            count += 1
