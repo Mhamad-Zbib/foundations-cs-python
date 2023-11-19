@@ -12,3 +12,8 @@ def displayMenu():
         "       5. Graph \n"
         "       6. Exit \n"
     )
+
+class Node:
+    def __init__(self, info):
+        self.info = info
+        self.next = None
