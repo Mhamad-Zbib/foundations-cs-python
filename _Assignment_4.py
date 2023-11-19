@@ -17,3 +17,7 @@ class Node:
     def __init__(self, info):
         self.info = info
         self.next = None
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
