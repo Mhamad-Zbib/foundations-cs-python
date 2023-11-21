@@ -30,10 +30,21 @@ class LinkedList:
         if position == 0:
             node.next = self.head
             self.head = node
-            return
+            return f"Added node {value} at position 0."
 
         current = self.head
         count = 0
-        while count < position - 1 and current.next is not None:
+        while count < position - 1 and current is not None:
             current = current.next
             count += 1
+
+        if current is None:
+            current = self.head
+            while current.next:
+                current = current.next
+            current.next = node
+            return f"Adding node {value} at the end of the LinkedList, since your position is out of bounds."
+
+        current.next = node
+        node.next = current.next
+        return f"Added node {value} at position {position}."
