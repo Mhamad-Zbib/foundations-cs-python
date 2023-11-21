@@ -55,3 +55,24 @@ class LinkedList:
             print(current.info, end=" => ")
             current = current.next
         return "None"
+
+    def removeNode(self, value):
+        current = self.head
+        previous = None
+
+        if current != None and current.info == value:
+            self.head = current.next
+            current = None
+            return f"{value} is removed!"
+
+        while current != None:
+            if current.info == value:
+                return f"{value} is removed!"
+            previous = current
+            current = current.next
+
+        if current == None:
+            return f"{value} was not found!"
+
+        previous.next = current.next
+        current = None
