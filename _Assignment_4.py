@@ -45,6 +45,13 @@ class LinkedList:
             current.next = node
             return f"Adding node {value} at the end of the LinkedList, since your position is out of bounds."
 
-        current.next = node
         node.next = current.next
+        current.next = node
         return f"Added node {value} at position {position}."
+
+    def displayNodes(self):
+        current = self.head
+        while current is not None:
+            print(current.info, end=" => ")
+            current = current.next
+        return "None"
