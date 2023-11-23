@@ -82,5 +82,12 @@ class Stack:
     def __init__(self):
         self.list = []
 
-    
-        
+    def push(self, data):
+        self.list.append(data)
+
+    def isEmpty(self):
+        return self.list == []
+
+    def pop(self):
+        assert not self.isEmpty()
+        return self.list.pop()
