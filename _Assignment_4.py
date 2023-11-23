@@ -95,9 +95,14 @@ class Stack:
             return f"can't pop from an empty list!"
 
 
-class Student():
+class Student:
     def __init__(self, name, midterm, final, attitude):
         self.name = name
         self.midterm = midterm
         self.final = final
         self.attitude = attitude
+
+
+class PriorityQueue:
+    def __init__(self):
+        self.head = None
