@@ -93,3 +93,11 @@ class Stack:
             return self.list.pop()
         else:
             return f"can't pop from an empty list!"
+
+
+class Student():
+    def __init__(self, midterm, final, attitude):
+        self.midterm = midterm
+        self.final = final
+        self.attitude = attitude
+        
