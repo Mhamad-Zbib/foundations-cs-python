@@ -78,6 +78,9 @@ class LinkedList:
         current = None
 
 
-def isPalindrome(s):
-    stack = []
+class Stack:
+    def __init__(self):
+        self.list = []
+
     
+        
