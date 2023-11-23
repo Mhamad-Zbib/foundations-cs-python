@@ -89,5 +89,7 @@ class Stack:
         return self.list == []
 
     def pop(self):
-        assert not self.isEmpty()
-        return self.list.pop()
+        if not self.isEmpty():
+            return self.list.pop()
+        else:
+            return f"can't pop from an empty list!"
