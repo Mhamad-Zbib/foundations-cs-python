@@ -106,3 +106,14 @@ class Student:
 class PriorityQueue:
     def __init__(self):
         self.head = None
+        self.tail = None
+        self.size = 0
+
+    def addStudent(self, student):
+        node = Node(student)
+        if self.head == None:
+            self.head = node
+            self.size += 1
+        else:
+            current = self.head
+            previous = None
