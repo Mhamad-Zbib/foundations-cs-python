@@ -96,8 +96,8 @@ class Stack:
 
 
 class Student():
-    def __init__(self, midterm, final, attitude):
+    def __init__(self, name, midterm, final, attitude):
+        self.name = name
         self.midterm = midterm
         self.final = final
         self.attitude = attitude
-        
