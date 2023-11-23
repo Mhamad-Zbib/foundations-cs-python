@@ -79,5 +79,5 @@ class LinkedList:
 
 
 def isPalindrome(s):
-    stack = input("Enter your string to check if it's a palindrome:")
+    stack = []
     
