@@ -194,3 +194,18 @@ class InfixExpression:
             return False
         else:
             return True
+
+    def evaluateString(self, expression):
+        values = []
+        stack = []
+        i = 0
+        while len(expression) > i:
+            if expression[i] == "":
+                continue
+            if expression[i] >="0" or expression[i] <="9":
+                num = []
+                while len(expression) > i and expression[i] >="0" and expression[i] <="9":
+                    num.append(expression[i])
+                    i += 1
+                values.append(int("".ioin(num)))
+            i += 1
