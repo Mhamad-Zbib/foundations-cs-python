@@ -156,3 +156,11 @@ class PriorityQueue:
                 node.next = current
                 previous.next = node
             self.size += 1
+
+    def interview(self):
+        if self.head == None:
+            return f"Your interview list is empty."
+        else:
+            print(f"You have an interview now with: {self.head.info}")
+            self.head = self.head.next
+            return self.interview()
