@@ -96,8 +96,8 @@ class Stack:
 
 
 class Node:
-    def __init__(self, info):
-        self.info = info
+    def __init__(self, student):
+        self.student = student
         self.next = None
 
 
@@ -161,6 +161,6 @@ class PriorityQueue:
         if self.head == None:
             return f"Your interview list is empty."
         else:
-            print(f"You have an interview now with: {self.head.info}")
+            print(f"You have an interview now with: {self.head.student.name}")
             self.head = self.head.next
             return self.interview()
