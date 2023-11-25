@@ -160,9 +160,18 @@ class PriorityQueue:
             self.size += 1
 
     def interview(self):
-        if self.head == None:
-            return f"Your interview list is empty."
-        else:
+        if self.size > 1:
+            print(f"You have {self.size} more students to interview.")
             print(f"You have an interview now with: {self.head.student.name}")
             self.head = self.head.next
+            self.size -= 1
             return self.interview()
+        elif self.size == 1:
+            print(f"You have {self.size} more student to interview.")
+            print(f"You have an interview now with: {self.head.student.name}")
+            self.head = self.head.next
+            self.size -= 1
+            return self.interview()
+        elif self.size == 0 and self.head == None:
+            print(f"Your interview list is empty.")
+
