@@ -186,4 +186,11 @@ class InfixExpression:
             return a * b
         elif op == "/":
             return a / b
-        
+
+    def priority(self, op1, op2):
+        if (op1 == "*" or op1 == "/") and (op2 == "+" or op2 == "-"):
+            return False
+        if op2 == "(" or op2 == ")":
+            return False
+        else:
+            return True
