@@ -95,6 +95,12 @@ class Stack:
             return f"can't pop from an empty list!"
 
 
+class Node:
+    def __init__(self, info):
+        self.info = info
+        self.next = None
+
+
 class Student:
     def __init__(self, name, midterm, final, attitude):
         self.name = name
@@ -117,3 +123,36 @@ class PriorityQueue:
         else:
             current = self.head
             previous = None
+            while current != None:
+                if current.student.attitude == True and student.attitude == True:
+                    if current.student.final < student.final:
+                        previous = current
+                        current = current.next
+                    elif current.student.final == student.final:
+                        if current.student.midterm < student.midterm:
+                            previous = current
+                            current = current.next
+                        else:
+                            break
+                    else:
+                        break
+                else:
+                    if current.student.final < student.final:
+                        previous = current
+                        current = current.next
+                    elif current.student.final == student.final:
+                        if current.student.midterm < student.midterm:
+                            previous = current
+                            current = current.next
+                        else:
+                            break
+                    else:
+                        break
+
+            if previous is None:
+                node.next = self.head
+                self.head = node
+            else:
+                node.next = current
+                previous.next = node
+            self.size += 1
