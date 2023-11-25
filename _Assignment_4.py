@@ -112,7 +112,6 @@ class Student:
 class PriorityQueue:
     def __init__(self):
         self.head = None
-        self.tail = None
         self.size = 0
 
     def addStudent(self, student):
@@ -125,23 +124,26 @@ class PriorityQueue:
             previous = None
             while current != None:
                 if current.student.attitude == True and student.attitude == True:
-                    if current.student.final < student.final:
+                    if current.student.final > student.final:
                         previous = current
                         current = current.next
                     elif current.student.final == student.final:
-                        if current.student.midterm < student.midterm:
+                        if current.student.midterm > student.midterm:
                             previous = current
                             current = current.next
                         else:
                             break
                     else:
                         break
+                elif current.student.attitude == False or student.attitude == False:
+                    previous = current
+                    current = current.next
                 else:
-                    if current.student.final < student.final:
+                    if current.student.final > student.final:
                         previous = current
                         current = current.next
                     elif current.student.final == student.final:
-                        if current.student.midterm < student.midterm:
+                        if current.student.midterm > student.midterm:
                             previous = current
                             current = current.next
                         else:
@@ -152,7 +154,7 @@ class PriorityQueue:
             if previous is None:
                 node.next = self.head
                 self.head = node
-            else:
+            elif previous is not None:
                 node.next = current
                 previous.next = node
             self.size += 1
