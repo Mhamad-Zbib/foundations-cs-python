@@ -175,3 +175,15 @@ class PriorityQueue:
         elif self.size == 0 and self.head == None:
             print(f"Your interview list is empty.")
 
+
+class InfixExpression:
+    def operation(self, op, a, b):
+        if op == "+":
+            return a + b
+        elif op == "-":
+            return a - b
+        elif op == "*":
+            return a * b
+        elif op == "/":
+            return a / b
+        
