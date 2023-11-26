@@ -281,3 +281,18 @@ class Graph:
             degree = sum(self.adj_matrix[i])
             if degree >= d:        
                 print(f"Your vertex {i} has a degree of: {degree}.")
+
+
+def main():
+    choice = 0 
+    while choice != 6:
+        displayMenu()
+        choice = input("Enter your choice: ")
+        print()
+
+        if choice == "":
+            print("Try again and enter a number.")
+
+
+
+main()
