@@ -228,3 +228,9 @@ class InfixExpression:
         while len(stack) != 0:
             values.append(self.operation(stack.pop(), values.pop(), values.pop()))
         return values
+
+
+class Graph:
+    def __init__(self, num_vertices):
+        self.num_vertices = num_vertices
+        self.adj_matrix = [[0] * num_vertices for _ in range(num_vertices)]
