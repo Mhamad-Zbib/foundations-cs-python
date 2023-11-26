@@ -337,6 +337,29 @@ def main():
                         print(" - Try again and enter a valid option.")
                         print()
             
+            if int(choice) == 2:
+                s = input("Enter a word to check if it's a palindrome: ")
+                st = Stack()
+
+                if s == "":
+                    print("Try again and enter a word.")
+                else:
+                    for i in s:
+                        st.push(i)
+
+                    lst = ""
+                    while not st.isEmpty():
+                        lst += st.pop()
+
+                    if lst == s:
+                        print()
+                        print(" - The word is a palindrome.\n")
+                    else:
+                        print()
+                        print(" - The word is not a palindrome.\n")
+                        print(s)
+                        print(lst)  
+                        print()
 
 
 main()
