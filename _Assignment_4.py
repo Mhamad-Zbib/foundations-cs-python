@@ -302,34 +302,39 @@ def main():
     choice = 0 
     while choice != 6:
         displayMenu()
-        choice = input("Enter your choice: ")
+        choice = input(" - Enter your choice: ")
         print()
 
         if choice == "":
-            print("Try again and enter a number.")
+            print(" - Try again and enter a number.")
         elif choice.isdigit():
             if int(choice) == 1:
                 ll = LinkedList()
                 while True:
                     first_choice_menu()
-                    option = input("Enter which option you want to run in the Linked List: ")
+                    option = input(" - Enter which option you want to run in the Linked List: ")
                     print()
                     if option == "":
-                        print("Try again and enter an option.\n")
+                        print(" - Try again and enter an option.\n")
                     if option.isdigit():
-                        print("Try again and enter an option.\n")
+                        print(" - Try again and enter an option.\n")
                     elif option.lower() == "a":
-                        value = int(input("Enter the value of the Node: "))
-                        position = int(input("Enter the position of the Node: "))
+                        value = int(input(" - Enter the value of the Node: "))
+                        position = int(input(" - Enter the position of the Node: "))
                         print()
                         ll.addNode(value, position)
                     elif option.lower() == "b":
                         ll.displayNodes()
                         print()
                     elif option.lower() == "c":
-                        value = int(input("Enter the value of the Node you want to remove: "))
+                        value = int(input(" - Enter the value of the Node you want to remove: "))
                         print()
                         ll.removeNode(value)
+                        print()
+                    elif option.lower() == "d":
+                        break
+                    else:
+                        print(" - Try again and enter a valid option.")
                         print()
             
 
