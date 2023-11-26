@@ -283,6 +283,17 @@ class Graph:
                 print(f"Your vertex {i} has a degree of: {degree}.")
 
 
+
+def first_choice_menu():
+    print(
+        "the menu: \n"
+        "       a. Add Node \n"
+        "       b. Display Nodes \n"
+        "       c. Search for & Delete Node \n"
+        "       d. Return to main menu \n"
+    )
+
+
 def main():
     choice = 0 
     while choice != 6:
@@ -292,6 +303,8 @@ def main():
 
         if choice == "":
             print("Try again and enter a number.")
+
+
 
 
 
