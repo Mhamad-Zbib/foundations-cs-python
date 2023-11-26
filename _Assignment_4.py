@@ -177,9 +177,9 @@ class PriorityQueue:
 
 
 class InfixExpression:
-    def operation(self, op, a, b):
+    def operation(self, op, b, a):
         if op == "+":
-            return a + b
+            return a + b # 
         elif op == "-":
             return a - b
         elif op == "*":
@@ -187,25 +187,44 @@ class InfixExpression:
         elif op == "/":
             return a / b
 
-    def priority(self, op1, op2):
-        if (op1 == "*" or op1 == "/") and (op2 == "+" or op2 == "-"):
-            return False
-        if op2 == "(" or op2 == ")":
-            return False
+    def priority(self, op):
+        if (op == "*" or op == "/"):
+            return 2
+        elif op == "+" or op == "-":
+            return 3
+        elif op == "(" or op == ")":
+            return 1
         else:
-            return True
+            return 0
 
     def evaluateString(self, expression):
-        values = []
-        stack = []
+        values = [] # 3 , 2 , 6
+        stack = [] # (, + , *
         i = 0
-        while len(expression) > i:
+        while i < len(expression):
             if expression[i] == "":
                 continue
-            if expression[i] >="0" or expression[i] <="9":
+
+            if expression[i] >= "0" and expression[i] <= "9":
                 num = []
-                while len(expression) > i and expression[i] >="0" and expression[i] <="9":
+                if expression[i] >= "0" and expression[i] <= "9":
                     num.append(expression[i])
-                    i += 1
-                values.append(int("".ioin(num)))
+                    values.append(int(("".join(num))))
+
+            elif expression[i] == "(":
+                stack.append(expression[i])
+
+            elif expression[i] == ")":
+                if stack[-1] != "(":
+                    values.append(self.operation(stack.pop(), values.pop(), values.pop())) # *, 2 , 6
+                stack.pop()
+
+            elif expression[i] == "*" or expression[i] == "/" or expression[i] == "+" or expression[i] == "-":
+                    stack.append(expression[i])
+
+            
             i += 1
+
+        while len(stack) != 0:
+            values.append(self.operation(stack.pop(), values.pop(), values.pop()))
+        return values
