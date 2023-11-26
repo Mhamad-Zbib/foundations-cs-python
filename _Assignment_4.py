@@ -166,18 +166,18 @@ class PriorityQueue:
     def interview(self):
         if self.size > 1:
             print(f"You have {self.size} more students to interview.")
-            print(f"You have an interview now with: {self.head.student.name}")
+            print(f"You have an interview now with: {self.head.student.name}\n")
             self.head = self.head.next
             self.size -= 1
             return self.interview()
         elif self.size == 1:
             print(f"You have {self.size} more student to interview.")
-            print(f"You have an interview now with: {self.head.student.name}")
+            print(f"You have an interview now with: {self.head.student.name}\n")
             self.head = self.head.next
             self.size -= 1
             return self.interview()
         elif self.size == 0 and self.head == None:
-            print(f"Your interview list is empty.")
+            print(f"Your interview list is empty.\n")
 
 
 class InfixExpression:
@@ -360,6 +360,29 @@ def main():
                         print(s)
                         print(lst)  
                         print()
+
+            if int(choice) == 3:
+                pq = PriorityQueue()
+                num = int(input("Enter how many students: "))
+                for i in range(num):
+                    name = input("Enter the name of the student: ")
+                    midterm = int(input("Enter the midterm grade of the student: "))
+                    final = int(input("Enter the final grade of the student: "))
+                    attitude = input("Enter the attitude of the student (True or False): ")
+                    print()
+                    if attitude.lower() == "true":
+                        attitude1 = True
+                        student = Student(name.capitalize(), midterm, final, attitude1)
+                        pq.addStudent(student)
+                    elif attitude.lower() == "false":
+                        attitude2 = False
+                        student = Student(name.capitalize(), midterm, final, attitude2)
+                        pq.addStudent(student)
+                    else:
+                        print("Try again and enter 'True' or 'False' for attitude.")
+                pq.interview()
+
+                
 
 
 main()
