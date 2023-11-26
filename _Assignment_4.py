@@ -195,11 +195,11 @@ class InfixExpression:
         if op == "*" or op == "/":
             return 2
         elif op == "+" or op == "-":
-            return 3
-        elif op == "(" or op == ")":
             return 1
-        else:
+        elif op == "(" or op == ")":
             return 0
+        else:
+            return -1
 
     def evaluateString(self, expression):
         values = []  
@@ -297,6 +297,18 @@ def first_choice_menu():
         "       d. Return to main menu \n"
     )
 
+def fifth_choice_menu():
+        print(
+        "the menu: \n"
+        "       a. Add Vertex \n"
+        "       b. Add Edge \n"
+        "       c. Remove Vertex \n"
+        "       d. Remove Edge \n"
+        "       e. Display Vertices With a Degree of X or more \n"
+        "       f. Return to Main Menu\n"
+    )
+        
+
 
 def main():
     choice = 0 
@@ -387,5 +399,7 @@ def main():
                 expression = input("Enter your expression: ")
                 result = infix.evaluateString(expression)
                 print(f"Result: {result}")
+
+            if int(choice) == 5:
 
 main()
