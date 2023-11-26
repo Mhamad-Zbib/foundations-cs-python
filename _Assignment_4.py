@@ -243,13 +243,13 @@ class Graph:
         for row in self.adj_matrix:
             row.append(0)
         self.adj_matrix.append([0] * self.num_vertices)
-        print("Added vertex", self.num_vertices - 1, "\n")
+        print("Added vertex", self.num_vertices, "\n")
 
     def addEdge(self, v1, v2):
         if 0 <= v1 < self.num_vertices and 0 <= v2 < self.num_vertices:
             self.adj_matrix[v1][v2] = 1
             self.adj_matrix[v2][v1] = 1
-            print(f"Added a vertex between vertices: {v1} and {v2} \n")
+            print(f"Added an edge between vertices: {v1} and {v2} \n")
 
         elif (v1 < 0 or v1 >= self.num_vertices) and (v2 < 0 or v2 >= self.num_vertices):
             print(f"Invalid Vertices: {v1} and {v2} \n")
@@ -260,20 +260,22 @@ class Graph:
         elif v2 < 0 or v2 >= self.num_vertices:
             print(f"Invalid Vertex: {v2}")
 
-        elif (0 <= v1 < self.num_vertices and 0 <= v2 < self.num_vertices) and v1 == v2:
-            print("Invalid. Can't add same vertex.")
 
     def removeVertex(self, v):
+        if v < 0 or v >= self.num_vertices:
+            print("Invalid index to remove.")
+            return 
         self.num_vertices -= 1
         self.adj_matrix.pop(v)
         for i in self.adj_matrix:
-            self.adj_matrix.pop([i][v])
+            i.pop(v)
         print("Vertex removed with all edges connected to it.\n")
 
     def removeEdge(self, v1, v2):
         if self.adj_matrix[v1][v2] != 0 and self.adj_matrix[v2][v1] != 0:
             self.adj_matrix[v1][v2] = 0
             self.adj_matrix[v2][v1] = 0
+            print(f"Edge between {v1} and {v2} is removed. \n")
         else:
             print(f"There is no edge between these vertices: {v1} and {v2}\n")
 
@@ -401,5 +403,52 @@ def main():
                 print(f"Result: {result}")
 
             if int(choice) == 5:
+                num = input(" - Enter the number of vertices: ")
+                print()
+                if num == "":
+                    print(" - Try again and enter a number.\n")
+
+                elif num.isdigit():
+                    graph = Graph(int(num))
+                    while True:
+                        fifth_choice_menu()
+                        option = input(" - Enter Your option: ")
+                        print()
+                        if option == "":
+                            print(" - Try again and enter a valid option.\n")
+
+                        elif option.lower() == "a":
+                            graph.addVertex()
+
+                        elif option.lower() == "b":
+                            v1 = int(input("Enter the first vertex: "))
+                            v2 = int(input("Enter the second vertex: "))
+                            print()
+                            graph.addEdge(v1, v2)
+
+                        elif option.lower() == "c":
+                            v = int(input("Enter the vertex to remove: "))
+                            print()
+                            graph.removeVertex(v)
+                        
+                        elif option.lower() == "d":
+                            v1 = int(input("Enter the first vertex: "))
+                            v2 = int(input("Enter the second vertex: "))
+                            print()
+                            graph.removeEdge(v1, v2)
+
+                        elif option.lower() == "e":
+                            degree = int(input("Enter the minimum degree to display: "))
+                            graph.displayGraph(degree)
+
+                        elif option.lower() == "f":
+                            break
+
+                        else:
+                            print("Invalid Choice. Enter a valid option.")
+
+                                                    
+                    
+
 
 main()
