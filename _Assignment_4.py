@@ -230,7 +230,16 @@ class InfixExpression:
         return values
 
 
+
 class Graph:
     def __init__(self, num_vertices):
         self.num_vertices = num_vertices
         self.adj_matrix = [[0] * num_vertices for _ in range(num_vertices)]
+
+
+    def addVertex(self):
+        self.num_vertices += 1
+        for row in self.adj_matrix:
+            row.append(0)
+        self.adj_matrix.append([0] * self.num_vertices)
+        
