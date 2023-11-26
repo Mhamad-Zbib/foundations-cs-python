@@ -26,35 +26,35 @@ class LinkedList:
 
     def addNode(self, value, position):
         node = Node(value)
-
-        if position == 0:
+        if self.head is None:
+            self.head = node
+            print(f"Adding {value} at first of the linkedlist since it was empty\n")
+            return
+        elif position == 0:
             node.next = self.head
             self.head = node
-            return f"Added node {value} at position 0."
-
+            print(f"Added node {value} at position {position}.\n")
+            return
         current = self.head
         count = 0
-        while count < position - 1 and current is not None:
+        while current.next is not None and count < position - 1:
             current = current.next
             count += 1
 
-        if current is None:
-            current = self.head
-            while current.next:
-                current = current.next
+        if count == position - 1:
+            node.next = current.next
             current.next = node
-            return f"Adding node {value} at the end of the LinkedList, since your position is out of bounds."
-
-        node.next = current.next
-        current.next = node
-        return f"Added node {value} at position {position}."
+            print(f"Added node {value} at position {position}.\n")
+        else:
+            current.next = node
+            print(f"Added node {value} at the end of the LinkedList, since your position is out of bounds.\n")
 
     def displayNodes(self):
         current = self.head
         while current is not None:
             print(current.info, end=" => ")
             current = current.next
-        return "None"
+        print("None")
 
     def removeNode(self, value):
         current = self.head
@@ -95,7 +95,7 @@ class Stack:
             return f"can't pop from an empty list!"
 
 
-class Node:
+class Node1:
     def __init__(self, student):
         self.student = student
         self.next = None
@@ -115,7 +115,7 @@ class PriorityQueue:
         self.size = 0
 
     def addStudent(self, student):
-        node = Node(student)
+        node = Node1(student)
         if self.head == None:
             self.head = node
             self.size += 1
@@ -303,9 +303,23 @@ def main():
 
         if choice == "":
             print("Try again and enter a number.")
-
-
-
+        elif choice.isdigit():
+            if int(choice) == 1:
+                ll = LinkedList()
+                while True:
+                    first_choice_menu()
+                    option = input("Enter which option you want to run in the Linked List: ")
+                    print()
+                    if option == "":
+                        print("Try again and enter an option.\n")
+                    if option.isdigit():
+                        print("Try again and enter an option.\n")
+                    elif option == "a":
+                        v = int(input("Enter the value of the Node: "))
+                        p= int(input("Enter the position of the Node: "))
+                        print()
+                        ll.addNode(v, p)
+            
 
 
 main()
