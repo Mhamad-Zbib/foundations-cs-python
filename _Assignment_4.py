@@ -242,4 +242,16 @@ class Graph:
         for row in self.adj_matrix:
             row.append(0)
         self.adj_matrix.append([0] * self.num_vertices)
-        
+        print("Added vertex", self.num_vertices - 1, "\n")
+
+    def addEdge(self, v1, v2):
+        if 0 <= v1 < self.num_vertices and 0 <= v2 < self.num_vertices:
+            self.adj_matrix[v1][v2] = 1
+            self.adj_matrix[v2][v1] = 1
+            print(f"Added a vertex between vertices: {v1} and {v2} \n")
+        elif (v1 < 0 or v1 >= self.num_vertices) and (v2 < 0 or v2 >= self.num_vertices):
+            print(f"Invalid Vertices: {v1} and {v2} \n")
+        elif v1 < 0 or v1 >= self.num_vertices:
+            print(f"Invalid Vertex: {v1}")
+        elif v2 < 0 or v2 >= self.num_vertices:
+            print(f"Invalid Vertex: {v2}")
