@@ -255,3 +255,14 @@ class Graph:
             print(f"Invalid Vertex: {v1}")
         elif v2 < 0 or v2 >= self.num_vertices:
             print(f"Invalid Vertex: {v2}")
+        elif (0 <= v1 < self.num_vertices and 0 <= v2 < self.num_vertices) and v1 == v2:
+            print("Invalid. Can't add same vertex.")
+
+    def removeVertex(self, v):
+        self.num_vertices -= 1
+        self.adj_matrix.pop(v)
+        for i in self.adj_matrix:
+            self.adj_matrix.pop([i][v])
+        print("Vertex removed with all edges connected to it.\n")
+
+    
