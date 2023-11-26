@@ -338,11 +338,11 @@ def main():
                         print()
             
             if int(choice) == 2:
-                s = input("Enter a word to check if it's a palindrome: ")
+                s = input(" - Enter a word to check if it's a palindrome: ")
                 st = Stack()
-
+                print()
                 if s == "":
-                    print("Try again and enter a word.")
+                    print(" - Try again and enter a word.\n")
                 else:
                     for i in s:
                         st.push(i)
