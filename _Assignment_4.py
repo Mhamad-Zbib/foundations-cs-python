@@ -179,7 +179,7 @@ class PriorityQueue:
 class InfixExpression:
     def operation(self, op, b, a):
         if op == "+":
-            return a + b # 
+            return a + b  
         elif op == "-":
             return a - b
         elif op == "*":
@@ -188,7 +188,7 @@ class InfixExpression:
             return a / b
 
     def priority(self, op):
-        if (op == "*" or op == "/"):
+        if op == "*" or op == "/":
             return 2
         elif op == "+" or op == "-":
             return 3
@@ -198,8 +198,8 @@ class InfixExpression:
             return 0
 
     def evaluateString(self, expression):
-        values = [] # 3 , 2 , 6
-        stack = [] # (, + , *
+        values = []  
+        stack = []  
         i = 0
         while i < len(expression):
             if expression[i] == "":
@@ -216,13 +216,12 @@ class InfixExpression:
 
             elif expression[i] == ")":
                 if stack[-1] != "(":
-                    values.append(self.operation(stack.pop(), values.pop(), values.pop())) # *, 2 , 6
+                    values.append(self.operation(stack.pop(), values.pop(), values.pop()))  
                 stack.pop()
 
-            elif expression[i] == "*" or expression[i] == "/" or expression[i] == "+" or expression[i] == "-":
-                    stack.append(expression[i])
+            elif expression[i] == "*"or expression[i] == "/"or expression[i] == "+"or expression[i] == "-":
+                stack.append(expression[i])
 
-            
             i += 1
 
         while len(stack) != 0:
@@ -230,12 +229,10 @@ class InfixExpression:
         return values
 
 
-
 class Graph:
     def __init__(self, num_vertices):
         self.num_vertices = num_vertices
         self.adj_matrix = [[0] * num_vertices for _ in range(num_vertices)]
-
 
     def addVertex(self):
         self.num_vertices += 1
@@ -249,12 +246,16 @@ class Graph:
             self.adj_matrix[v1][v2] = 1
             self.adj_matrix[v2][v1] = 1
             print(f"Added a vertex between vertices: {v1} and {v2} \n")
+
         elif (v1 < 0 or v1 >= self.num_vertices) and (v2 < 0 or v2 >= self.num_vertices):
             print(f"Invalid Vertices: {v1} and {v2} \n")
+
         elif v1 < 0 or v1 >= self.num_vertices:
             print(f"Invalid Vertex: {v1}")
+
         elif v2 < 0 or v2 >= self.num_vertices:
             print(f"Invalid Vertex: {v2}")
+
         elif (0 <= v1 < self.num_vertices and 0 <= v2 < self.num_vertices) and v1 == v2:
             print("Invalid. Can't add same vertex.")
 
@@ -270,4 +271,13 @@ class Graph:
             self.adj_matrix[v1][v2] = 0
             self.adj_matrix[v2][v1] = 0
         else:
-            print(f"There is no edge between these vertices: {v1} and {v2}")
+            print(f"There is no edge between these vertices: {v1} and {v2}\n")
+
+    def displayGraph(self, d):
+        if len(self.adj_matrix) == 0:
+            print("Graph is empty!\n")
+            return
+        for i in range(self.num_vertices):
+            degree = sum(self.adj_matrix[i])
+            if degree >= d:        
+                print(f"Your vertex {i} has a degree of: {degree}.")
