@@ -382,7 +382,10 @@ def main():
                         print("Try again and enter 'True' or 'False' for attitude.")
                 pq.interview()
 
-                
-
+            if int(choice) == 4:
+                infix = InfixExpression()
+                expression = input("Enter your expression: ")
+                result = infix.evaluateString(expression)
+                print(f"Result: {result}")
 
 main()
