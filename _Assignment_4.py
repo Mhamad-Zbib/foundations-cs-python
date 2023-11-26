@@ -313,15 +313,30 @@ def fifth_choice_menu():
 
 
 def main():
-    choice = 0 
+    choice = 0
+    consecutive_errors = 0
     while choice != 6:
         displayMenu()
         choice = input(" - Enter your choice: ")
         print()
 
         if choice == "":
-            print(" - Try again and enter a number.")
-        elif choice.isdigit():
+            print(" - Try again and enter a number.\n")
+            consecutive_errors += 1
+        elif not choice.isdigit():
+            print(" - Try again and enter a valid number.\n")
+            consecutive_errors += 1
+        elif int(choice) < 1 or int(choice) > 6:
+            print(" - Try again and choose number between 1 and 6.\n")
+            consecutive_errors += 1
+        else:
+            consecutive_errors = 0
+        
+        if consecutive_errors >=4:
+            print(" - To many consecutive errors. Exiting.")
+            break
+
+        if choice.isdigit():
             if int(choice) == 1:
                 ll = LinkedList()
                 while True:
@@ -351,7 +366,7 @@ def main():
                         print(" - Try again and enter a valid option.")
                         print()
             
-            if int(choice) == 2:
+            elif int(choice) == 2:
                 s = input(" - Enter a word to check if it's a palindrome: ")
                 st = Stack()
                 print()
@@ -375,7 +390,7 @@ def main():
                         print(lst)  
                         print()
 
-            if int(choice) == 3:
+            elif int(choice) == 3:
                 pq = PriorityQueue()
                 num = int(input("Enter how many students: "))
                 for i in range(num):
@@ -396,13 +411,13 @@ def main():
                         print("Try again and enter 'True' or 'False' for attitude.")
                 pq.interview()
 
-            if int(choice) == 4:
+            elif int(choice) == 4:
                 infix = InfixExpression()
                 expression = input("Enter your expression: ")
                 result = infix.evaluateString(expression)
                 print(f"Result: {result}")
 
-            if int(choice) == 5:
+            elif int(choice) == 5:
                 num = input(" - Enter the number of vertices: ")
                 print()
                 if num == "":
@@ -447,7 +462,8 @@ def main():
                         else:
                             print("Invalid Choice. Enter a valid option.")
 
-                                                    
+            elif int(choice) == 6:
+                break
                     
 
 
