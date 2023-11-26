@@ -63,16 +63,20 @@ class LinkedList:
         if current != None and current.info == value:
             self.head = current.next
             current = None
-            return f"{value} is removed!"
+            print(f"{value} is removed!")
+            return
 
-        while current != None:
+        while current is not None:
             if current.info == value:
-                return f"{value} is removed!"
+                print(f"{value} is removed!")
+                break
             previous = current
             current = current.next
+                
 
         if current == None:
-            return f"{value} was not found!"
+            print(f"{value} was not found!")
+            return
 
         previous.next = current.next
         current = None
@@ -314,11 +318,19 @@ def main():
                         print("Try again and enter an option.\n")
                     if option.isdigit():
                         print("Try again and enter an option.\n")
-                    elif option == "a":
-                        v = int(input("Enter the value of the Node: "))
-                        p= int(input("Enter the position of the Node: "))
+                    elif option.lower() == "a":
+                        value = int(input("Enter the value of the Node: "))
+                        position = int(input("Enter the position of the Node: "))
                         print()
-                        ll.addNode(v, p)
+                        ll.addNode(value, position)
+                    elif option.lower() == "b":
+                        ll.displayNodes()
+                        print()
+                    elif option.lower() == "c":
+                        value = int(input("Enter the value of the Node you want to remove: "))
+                        print()
+                        ll.removeNode(value)
+                        print()
             
 
 
