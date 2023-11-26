@@ -265,4 +265,9 @@ class Graph:
             self.adj_matrix.pop([i][v])
         print("Vertex removed with all edges connected to it.\n")
 
-    
+    def removeEdge(self, v1, v2):
+        if self.adj_matrix[v1][v2] != 0 and self.adj_matrix[v2][v1] != 0:
+            self.adj_matrix[v1][v2] = 0
+            self.adj_matrix[v2][v1] = 0
+        else:
+            print(f"There is no edge between these vertices: {v1} and {v2}")
